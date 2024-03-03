@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
@@ -39,3 +40,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 # csat_sentiment
 This is my thesis which is a tool for call center agent in measure their customer satisfaction rate with a built-in script recommender system.
 >>>>>>> origin/main
+=======
+# csat_sentiment
+This is my thesis which is a tool for call center agent in measure their customer satisfaction rate with a built-in script recommender system.
+>>>>>>> a48b0b783bd0fe74d09f081ff180be98ceda9329
