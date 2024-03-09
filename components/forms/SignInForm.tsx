@@ -24,10 +24,12 @@ import Link from 'next/link';
 import { SignInSchema, signinSchema } from '@/lib/validation';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import { useToast } from "@/components/ui/use-toast"
 
 
 const SignInForm = () => {
   const router = useRouter();
+  const { toast } = useToast()
   const form = useForm<SignInSchema>({
     resolver: zodResolver(signinSchema),
     defaultValues: {
@@ -43,10 +45,13 @@ const SignInForm = () => {
       redirect: false,
     });
 
-    console.log('data:', data); 
 
     if(data?.error) {
-      console.log('error: ', data.error);
+      toast({
+        variant: "destructive",
+        title: "Uh oh! Something went wrong.",
+        description: "There was an error logging you in. Please try again.",
+      })
     } else {
       router.push('/dashboard')
     }

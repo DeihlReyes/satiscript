@@ -1,6 +1,8 @@
 const dashboard = async () => {
   return (
-    <div>dashboard</div>
+    <section>
+      <h1>Dashboard</h1>
+    </section>
   )
 }
 

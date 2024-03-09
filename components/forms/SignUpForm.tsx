@@ -24,6 +24,7 @@ import {
 } from "@/components/ui/card";
 import { RegisterSchema, registerSchema } from '@/lib/validation';
 import { useRouter } from 'next/navigation';
+import { toast } from '../ui/use-toast';
 
 
 const SignUpForm = () => {
@@ -52,7 +53,11 @@ const SignUpForm = () => {
     if(response.ok) {
       router.push('/sign-in')
     } else {
-      console.error('Registration Failed!')
+      toast({
+        variant: "destructive",
+        title: "Uh oh! Something went wrong.",
+        description: "There was an error in the sign up process. Please try again.",
+      })
     }
   };
 
