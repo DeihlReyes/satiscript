@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useForm } from 'react-hook-form';
+import { useForm } from "react-hook-form";
 import {
   Form,
   FormControl,
@@ -8,12 +8,12 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '../ui/form';
-import * as z from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { Input } from '../ui/input';
-import { Button } from '../ui/button';
-import Link from 'next/link';
+} from "../ui/form";
+import * as z from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Input } from "../ui/input";
+import { Button } from "../ui/button";
+import Link from "next/link";
 import {
   Card,
   CardContent,
@@ -22,63 +22,65 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { RegisterSchema, registerSchema } from '@/lib/validation';
-import { useRouter } from 'next/navigation';
-import { toast } from '../ui/use-toast';
-
+import { RegisterSchema, registerSchema } from "@/lib/validation";
+import { useRouter } from "next/navigation";
+import { toast } from "../ui/use-toast";
 
 const SignUpForm = () => {
   const router = useRouter();
   const form = useForm<RegisterSchema>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
-      email: '',
-      password: '',
-      confirmPassword: '',
+      email: "",
+      password: "",
+      confirmPassword: "",
     },
   });
 
   const onSubmit = async (values: RegisterSchema) => {
-    const response = await fetch('/api/user', {
-      method: 'POST',
+    const response = await fetch("/api/auth/sign-up", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         email: values.email,
-        password: values.password
-      })
-    })
+        password: values.password,
+      }),
+    });
 
-    if(response.ok) {
-      router.push('/sign-in')
+    if (response.ok) {
+      router.push("/sign-in");
     } else {
       toast({
         variant: "destructive",
         title: "Uh oh! Something went wrong.",
-        description: "There was an error in the sign up process. Please try again.",
-      })
+        description:
+          "There was an error in the sign up process. Please try again.",
+      });
     }
   };
 
-  return(
-    <Card className='lg:w-[400px] h-full shadow-md shadow-slate-200 p-4'>
-      <CardHeader className='text-center space-y-2'>
+  return (
+    <Card className="lg:w-[400px] h-full shadow-md shadow-slate-200 p-4">
+      <CardHeader className="text-center space-y-2">
         <CardTitle>CSATisfy</CardTitle>
-        <CardDescription>Sign in if you already have an account</CardDescription>
+        <CardDescription>
+          Sign in if you already have an account
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className='w-full'>
-            <div className='space-y-2'>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="w-full">
+            <div className="space-y-2">
               <FormField
                 control={form.control}
-                name='email'
+                name="email"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Email</FormLabel>
                     <FormControl>
-                      <Input placeholder='mail@example.com' {...field} />
+                      <Input placeholder="mail@example.com" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -86,14 +88,14 @@ const SignUpForm = () => {
               />
               <FormField
                 control={form.control}
-                name='password'
+                name="password"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Password</FormLabel>
                     <FormControl>
                       <Input
-                        type='password'
-                        placeholder='Enter your password'
+                        type="password"
+                        placeholder="Enter your password"
                         {...field}
                       />
                     </FormControl>
@@ -103,14 +105,14 @@ const SignUpForm = () => {
               />
               <FormField
                 control={form.control}
-                name='confirmPassword'
+                name="confirmPassword"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Re-Enter your password</FormLabel>
                     <FormControl>
                       <Input
-                        placeholder='Re-Enter your password'
-                        type='password'
+                        placeholder="Re-Enter your password"
+                        type="password"
                         {...field}
                       />
                     </FormControl>
@@ -119,15 +121,15 @@ const SignUpForm = () => {
                 )}
               />
             </div>
-            <CardFooter className='p-0'>
-              <Button className='w-full mt-6' type='submit'>
+            <CardFooter className="p-0">
+              <Button className="w-full mt-6" type="submit">
                 Sign up
               </Button>
-            </CardFooter> 
+            </CardFooter>
           </form>
-          <p className='text-center text-sm text-gray-600 mt-8'>
+          <p className="text-center text-sm text-gray-600 mt-8">
             Already have an account?&nbsp;
-            <Link className='text-blue-500 hover:underline' href='/sign-in'>
+            <Link className="text-blue-500 hover:underline" href="/sign-in">
               Sign in
             </Link>
           </p>
@@ -138,4 +140,3 @@ const SignUpForm = () => {
 };
 
 export default SignUpForm;
-

@@ -1,45 +1,49 @@
-import { PrismaAdapter } from "@next-auth/prisma-adapter"
-import { NextAuthOptions } from "next-auth"
-import CredentialsProvider from "next-auth/providers/credentials"
-import { db } from "@/lib/db"
-import { compare } from "bcrypt"
+import { SignJWT, jwtVerify } from "jose";
+import { cookies } from "next/headers";
+import { NextRequest, NextResponse } from "next/server";
 
-export const authOptions: NextAuthOptions = {
-  adapter: PrismaAdapter(db),
-	secret: process.env.NEXTAUTH_SECRET,
-  pages: {
-    signIn: "/sign-in",
-  },
-  providers: [
-		CredentialsProvider({
-			name: "Credentials",
-			credentials: {
-				email: { label: "Email", type: "email", placeholder: "john@example.com" },
-				password: { label: "Password", type: "password" }
-			},
-			async authorize(credentials) {
-				if (!credentials?.email || !credentials.password) {
-					return null;
-				}
+const secretKey = "secret";
+const key = new TextEncoder().encode(secretKey);
 
-				const existingUser = await db.user.findUnique({
-					where: {email: credentials.email}
-				})
+export async function encrypt(payload: any) {
+  return await new SignJWT(payload)
+    .setProtectedHeader({ alg: "HS256" })
+    .setIssuedAt()
+    .setExpirationTime("12 hours")
+    .sign(key);
+}
 
-				if(!existingUser){
-					return null;
-				}
+export async function decrypt(input: string): Promise<any> {
+  const { payload } = await jwtVerify(input, key, {
+    algorithms: ["HS256"],
+  });
+  return payload;
+}
 
-				const passwordMatch = await compare(credentials.password, existingUser.password)
+export async function logout() {
+  // Destroy the session
+  cookies().set("session", "", { expires: new Date(0) });
+}
 
-				if(!passwordMatch){
-					return null;
-				}
-				return {
-					id: `${existingUser.id}`,
-					email: existingUser.email
-				}
-			}
-		})
-  ],
+export async function getSession() {
+  const session = cookies().get("session")?.value;
+  if (!session) return null;
+  return await decrypt(session);
+}
+
+export async function updateSession(request: NextRequest) {
+  const session = request.cookies.get("session")?.value;
+  if (!session) return;
+
+  // Refresh the session so it doesn't expire
+  const parsed = await decrypt(session);
+  parsed.expires = new Date(Date.now() + 12 * 60 * 60 * 1000);
+  const res = NextResponse.next();
+  res.cookies.set({
+    name: "session",
+    value: await encrypt(parsed),
+    httpOnly: true,
+    expires: parsed.expires,
+  });
+  return res;
 }

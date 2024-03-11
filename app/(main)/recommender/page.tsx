@@ -1,7 +1,7 @@
-'use client'
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { useState } from 'react';
+import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
 const Recommender = () => {
   const [recording, setRecording] = useState(false);
@@ -13,24 +13,24 @@ const Recommender = () => {
     mediaRecorder = new MediaRecorder(stream);
     mediaRecorder.start();
 
-    mediaRecorder.ondataavailable = function(e) {
+    mediaRecorder.ondataavailable = function (e) {
       chunks.push(e.data);
-    }
+    };
 
     setRecording(true);
-  }
+  };
 
   const stopRecording = () => {
     if (mediaRecorder) {
       mediaRecorder.stop();
-      const blob = new Blob(chunks, { 'type' : 'audio/ogg; codecs=opus' });
+      const blob = new Blob(chunks, { type: "audio/ogg; codecs=opus" });
       chunks = [];
       const audioURL = window.URL.createObjectURL(blob);
       // You can use audioURL for further processing
     }
 
     setRecording(false);
-  }
+  };
 
   return (
     <section className="h-screen w-full p-8">
@@ -41,7 +41,7 @@ const Recommender = () => {
         <Button onClick={startRecording}>Start Recording</Button>
       )}
     </section>
-  )
-}
+  );
+};
 
-export default Recommender
+export default Recommender;

@@ -1,12 +1,14 @@
-import SignInForm from '@/components/forms/SignInForm';
+import SignInForm from "@/components/forms/SignInForm";
+import { getSession } from "next-auth/react";
+import { redirect } from "next/navigation";
 
-const page = () => {
+const page = async () => {
   return (
-    <div className='flex flex-col justify-center items-center h-screen '>
+    <section className="flex flex-col justify-center items-center h-screen ">
       <div>
         <SignInForm />
       </div>
-    </div>
+    </section>
   );
 };
 
