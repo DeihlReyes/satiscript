@@ -42,7 +42,7 @@ export async function POST(req: Request) {
     cookies().set("session", session, { expires, httpOnly: true });
 
     return NextResponse.json(
-      { user: user, message: "User Created Successfully" },
+      { user: user, message: "Login Successfull" },
       { status: 201 }
     );
   } catch (error) {
