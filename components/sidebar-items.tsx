@@ -1,27 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { LayoutDashboard, Presentation, Settings, Shapes } from "lucide-react";
+import { Shapes } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { usePathname, useRouter } from "next/navigation";
-
-const routes = [
-  {
-    label: "Dashboard",
-    icon: LayoutDashboard,
-    href: "/dashboard",
-  },
-  {
-    label: "Call Analytics",
-    icon: Presentation,
-    href: "/analytics",
-  },
-  {
-    label: "Settings",
-    icon: Settings,
-    href: "/settings",
-  },
-];
+import routes from "@/lib/constant";
 
 const SideBarItems = () => {
   const pathname = usePathname();
