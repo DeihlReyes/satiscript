@@ -40,17 +40,17 @@ const data = [
 
 export function AreaChartComponent() {
   return (
-    <Card className="p-6 w-2/3 h-full shadow-md shadow-slate-200">
+    <Card className="p-2 lg:p-6 w-full lg:w-2/3 h-full shadow-md shadow-slate-200">
       <CardHeader>
-        <CardTitle>Call Volume</CardTitle>
+        <CardTitle className="text-base lg:text-lg font-semibold">Call Volume</CardTitle>
       </CardHeader>
       <CardContent className="py-6">
         <ResponsiveContainer width="100%" height={250}>
           <AreaChart
             data={data}
             margin={{
-              top: 10,
-              right: 30,
+              top: 0,
+              right: 10,
               left: 0,
               bottom: 0,
             }}>
