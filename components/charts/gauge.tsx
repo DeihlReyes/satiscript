@@ -19,7 +19,21 @@ const iR = 80;
 const oR = 130;
 const value = 50;
 
-const needle = (value, data, cx, cy, iR, oR, color) => {
+interface DataItem {
+  name: string;
+  value: number;
+  color: string;
+}
+
+const needle = (
+  value: number,
+  data: DataItem[],
+  cx: number,
+  cy: number,
+  iR: number,
+  oR: number,
+  color: string
+): JSX.Element[] => {
   let total = 0;
   data.forEach((v) => {
     total += v.value;
@@ -40,7 +54,12 @@ const needle = (value, data, cx, cy, iR, oR, color) => {
 
   return [
     <circle key={null} cx={x0} cy={y0} r={r} fill={color} stroke="none" />,
-    <path key={null} d={`M${xba} ${yba}L${xbb} ${ybb} L${xp} ${yp} L${xba} ${yba}`} stroke="#none" fill={color} />,
+    <path
+      key={null}
+      d={`M${xba} ${yba}L${xbb} ${ybb} L${xp} ${yp} L${xba} ${yba}`}
+      stroke="#none"
+      fill={color}
+    />,
   ];
 };
 
