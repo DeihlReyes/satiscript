@@ -1,5 +1,6 @@
 import { AreaChartComponent } from "@/components/charts/areacharts";
 import { GaugeChart } from "@/components/charts/gauge";
+import { LineChartComponent } from "@/components/charts/linecharts";
 import DataCards from "@/components/datacards";
 import { getSession } from "@/lib/auth";
 import { redirect } from "next/navigation";
@@ -18,6 +19,7 @@ const dashboard = async () => {
         <AreaChartComponent />
         <GaugeChart />
       </div>
+      <LineChartComponent />
     </section>
   );
 };

@@ -7,9 +7,9 @@ export const routes = [
     href: "/dashboard",
   },
   {
-    label: "Call Analytics",
+    label: "Call Logs",
     icon: Presentation,
-    href: "/analytics",
+    href: "/call-logs",
   },
   {
     label: "Settings",
