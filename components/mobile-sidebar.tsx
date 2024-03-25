@@ -28,16 +28,16 @@ export const MobileSidebar = () => {
         <Menu />
       </SheetTrigger>
       <SheetContent
-        side="left"
-        className="flex h-full flex-col space-y-8 border border-solid border-[#0d0d0d]/10 p-0 shadow-lg shadow-[#0d0d0d]/10 dark:border-[#fefefe]/10 dark:shadow-[#fefefe]/10"
+        side="right"
+        className="flex h-full flex-col space-y-8 p-0"
       >
-        <SheetHeader className="px-4 py-8">
+        <SheetHeader className="px-4 py-8 mt-1">
           <div>
             <div className="flex items-center pt-2">
               <div className="relative mr-4 h-8 w-8">
                 <Shapes className="absolute h-full w-full text-blue-700" />
               </div>
-              <h1 className="text-2xl font-bold">TaskQuill</h1>
+              <h1 className="text-2xl font-bold">Satiscript</h1>
             </div>
           </div>
         </SheetHeader>

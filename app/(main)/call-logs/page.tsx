@@ -28,7 +28,7 @@ const CallLogs = async () => {
   
   const calls = await getTasks()
   return (
-    <div className='p-12'>
+    <div className='px-8 lg:px-12 py-8'>
       <DataTable columns={columns} data={calls}/>
     </div>
   )

@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import React from "react";
+import { MobileSidebar } from "./mobile-sidebar";
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -16,7 +17,8 @@ const Navbar = () => {
   return (
     <header className="flex flex-row w-full justify-between py-8 px-8 lg:px-12 border-b shadow-sm shadow-slate-200">
       <h1 className="text-xl font-bold tracking-wider">{formattedPathname}</h1>
-      <p className="text-md font-semibold">{currentDate}</p>
+      <p className="hidden lg:block text-md font-semibold">{currentDate}</p>
+      <MobileSidebar />
     </header>
   );
 };
