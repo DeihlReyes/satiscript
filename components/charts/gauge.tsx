@@ -13,7 +13,7 @@ const RADIAN = Math.PI / 180;
 const data = [
   { name: 'A', value: 80, color: '#ff0000' },
 ];
-const cx = 150;
+const cx = 135;
 const cy = 200;
 const iR = 80;
 const oR = 130;
