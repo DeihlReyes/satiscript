@@ -64,7 +64,7 @@ const SignUpForm = () => {
   return (
     <Card className="lg:w-[400px] h-full shadow-md shadow-slate-200 p-4">
       <CardHeader className="text-center space-y-2">
-        <CardTitle>CSATisfy</CardTitle>
+        <CardTitle>Satiscript</CardTitle>
         <CardDescription>
           Sign in if you already have an account
         </CardDescription>

@@ -17,10 +17,8 @@ import {
 const LogoutButton = () => {
   return (
         <AlertDialog>
-          <AlertDialogTrigger className="w-full">
-            <Button className="w-full">
+          <AlertDialogTrigger className="w-full py-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90">
               Sign out
-            </Button>  
           </AlertDialogTrigger>
           <AlertDialogContent>
             <AlertDialogHeader>

@@ -15,7 +15,7 @@ const Navbar = () => {
   });
 
   return (
-    <header className="flex flex-row w-full justify-between py-8 px-8 lg:px-12 border-b shadow-sm shadow-slate-200">
+    <header className="flex flex-row w-full justify-between py-8 px-8 lg:px-12 border-b dark:shadow-none shadow-sm shadow-slate-200">
       <h1 className="text-xl font-bold tracking-wider">{formattedPathname}</h1>
       <p className="hidden lg:block text-md font-semibold">{currentDate}</p>
       <MobileSidebar />

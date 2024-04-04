@@ -9,31 +9,25 @@ import {
 } from "recharts";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-const RADIAN = Math.PI / 180;
-const data = [
-  { name: 'A', value: 80, color: '#ff0000' },
-];
-const cx = 135;
-const cy = 200;
-const iR = 80;
-const oR = 130;
-const value = 50;
-
 interface DataItem {
   name: string;
   value: number;
   color: string;
 }
 
-const needle = (
-  value: number,
-  data: DataItem[],
-  cx: number,
-  cy: number,
-  iR: number,
-  oR: number,
-  color: string
-): JSX.Element[] => {
+const RADIAN = Math.PI / 180;
+const data = [
+  { name: 'A', value: 80, color: '#ff0000' },
+  { name: 'B', value: 45, color: '#00ff00' },
+  { name: 'C', value: 25, color: '#0000ff' },
+];
+const cx = 226;
+const cy = 225;
+const iR = 120;
+const oR = 200;
+const value = 50;
+
+const needle = (value: number, data: any[], cx: number, cy: number, iR: number, oR: number, color: string | undefined) => {
   let total = 0;
   data.forEach((v) => {
     total += v.value;
@@ -54,43 +48,44 @@ const needle = (
 
   return [
     <circle key={null} cx={x0} cy={y0} r={r} fill={color} stroke="none" />,
-    <path
-      key={null}
-      d={`M${xba} ${yba}L${xbb} ${ybb} L${xp} ${yp} L${xba} ${yba}`}
-      stroke="#none"
-      fill={color}
-    />,
+    <path key={null} d={`M${xba} ${yba}L${xbb} ${ybb} L${xp} ${yp} L${xba} ${yba}`} stroke="#none" fill={color} />,
   ];
 };
 
 
 export function GaugeChart() {
   return (
-    <Card className="p-2 lg:p-6 w-full lg:w-1/3 h-full shadow-md shadow-slate-200">
+    <Card className="p-2 lg:p-6 w-full lg:w-1/3 h-full dark:shadow-none shadow-md shadow-slate-200">
       <CardHeader>
         <CardTitle className="text-base lg:text-lg font-semibold">Call Volume</CardTitle>
       </CardHeader>
       <CardContent className="py-6">
         <ResponsiveContainer width="100%" height={250}>
-          <PieChart className="mx-auto">
-          <Pie
-            dataKey="value"
-            startAngle={180}
-            endAngle={0}
-            data={data}
-            cy={cy}
-            innerRadius={iR}
-            outerRadius={oR}
-            fill="#8884d8"
-            stroke="none"
-          >
-            {data.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={entry.color} />
-            ))}
-          </Pie>
-          <Tooltip />
-          {needle(value, data, cx, cy, iR, oR, '#d0d000')}
-        </PieChart>
+          <PieChart margin={{
+              top: 0,
+              right: 0,
+              left: 0,
+              bottom: 0,
+            }}>
+            <Pie
+              dataKey="value"
+              startAngle={180}
+              endAngle={0}
+              data={data}
+              cx={cx}
+              cy={cy}
+              innerRadius={iR}
+              outerRadius={oR}
+              fill="#8884d8"
+              stroke="none"
+            >
+              {data.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={entry.color} />
+              ))}
+            </Pie>
+            <Tooltip />
+            {needle(value, data, cx, cy, iR, oR, '#d0d000')}
+          </PieChart>
         </ResponsiveContainer>
       </CardContent>
     </Card>

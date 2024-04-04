@@ -1,4 +1,5 @@
 import AccountTab from "@/components/account-tab"
+import GeneralTab from "@/components/general-tab"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 
@@ -13,7 +14,8 @@ const Settings = () => {
         <TabsContent value="account">
           <AccountTab />
         </TabsContent>
-        <TabsContent value="password">
+        <TabsContent value="general">
+          <GeneralTab />
         </TabsContent>
       </Tabs>
     </div>

@@ -40,7 +40,7 @@ const data = [
 
 export function AreaChartComponent() {
   return (
-    <Card className="p-2 lg:p-6 w-full lg:w-2/3 h-full shadow-md shadow-slate-200">
+    <Card className="p-2 lg:p-6 w-full lg:w-2/3 h-full dark:shadow-none shadow-md shadow-slate-200">
       <CardHeader>
         <CardTitle className="text-base lg:text-lg font-semibold">Call Volume</CardTitle>
       </CardHeader>

@@ -3,7 +3,7 @@ import { Card, CardHeader, CardTitle, CardContent } from "./ui/card";
 const DataCards = () => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 w-full">
-      <Card className="w-full text-center shadow-md shadow-slate-200">
+      <Card className="w-full text-center dark:shadow-none shadow-md shadow-slate-200">
         <CardHeader>
           <CardTitle className="text-base font-semibold">Total Call</CardTitle>
         </CardHeader>
@@ -12,7 +12,7 @@ const DataCards = () => {
         </CardContent>
       </Card>
 
-      <Card className="w-full text-center shadow-md shadow-slate-200">
+      <Card className="w-full text-center dark:shadow-none shadow-md shadow-slate-200">
         <CardHeader>
           <CardTitle className="text-base lg:text-lg font-semibold">
             Average Call Time
@@ -25,7 +25,7 @@ const DataCards = () => {
         </CardContent>
       </Card>
 
-      <Card className="w-full text-center shadow-md shadow-slate-200">
+      <Card className="w-full text-center dark:shadow-none shadow-md shadow-slate-200">
         <CardHeader>
           <CardTitle className="text-base lg:text-lg font-semibold">
             Satisfied Callers
@@ -36,7 +36,7 @@ const DataCards = () => {
         </CardContent>
       </Card>
 
-      <Card className="w-full text-center shadow-md shadow-slate-200">
+      <Card className="w-full text-center dark:shadow-none shadow-md shadow-slate-200">
         <CardHeader>
           <CardTitle className="text-base lg:text-lg font-semibold">
             Dissatisfied Callers

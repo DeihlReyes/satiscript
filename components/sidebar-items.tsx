@@ -19,7 +19,7 @@ const SideBarItems = () => {
         <div className="relative mr-4 h-8 w-8">
           <Shapes className="absolute h-full w-full text-primary" />
         </div>
-        <h1 className="text-2xl font-bold">CSATify</h1>
+        <h1 className="text-2xl font-bold">Satiscript</h1>
       </Link>
       <ul className="space-y-1">
         {routes.map((route) => (
