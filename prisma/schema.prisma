@@ -19,3 +19,10 @@ model User {
   updatedAt     DateTime @updatedAt
 }
 
+model Espware {
+  id            String    @id @default(cuid())
+  isCall        Boolean
+  emotion       String
+  satisfaction  String
+  updatedAt     DateTime @updatedAt
+}
