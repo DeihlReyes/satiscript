@@ -5,9 +5,18 @@ import { signinSchema } from "@/lib/validation";
 import { encrypt } from "@/lib/auth";
 import { cookies } from "next/headers";
 
-export async function GET(req: Request) {
+export async function PATCH(req: Request) {
+  const { emotion } = await req.json();
+  
   try {
-    const esp = await db.espware.findMany()
+    const esp = await db.espware.update(
+      {
+        where: { id: "thisisid" },
+        data: {
+          emotion,
+        },
+      }
+    )
 
     return NextResponse.json(
       { Esp_Data: esp, message: "Extraction Successfull" },

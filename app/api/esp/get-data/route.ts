@@ -7,7 +7,9 @@ import { cookies } from "next/headers";
 
 export async function GET(req: Request) {
   try {
-    const esp = await db.espware.findFirst()
+    const esp = await db.espware.findUnique({
+      where: { id: "thisisid" },
+    })
 
     return NextResponse.json(
       { Esp_Data: esp, message: "Extraction Successfull" },
