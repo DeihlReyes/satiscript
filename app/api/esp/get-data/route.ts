@@ -7,7 +7,6 @@ import { cookies } from "next/headers";
 
 export async function GET(req: Request) {
   try {
-    // fetch the data in which the latest updatedat is the most recent
     const data = await db.espware.findFirst({
       orderBy: {
         updatedAt: "desc"
@@ -16,7 +15,7 @@ export async function GET(req: Request) {
 
     return NextResponse.json(
       { Esp_Data: data, message: "Extraction Successfull" },
-      { status: 201 }
+      { status: 201, headers: { 'Cache-Control': 'no-store' } }
     );
   } catch(error) {
     return NextResponse.json(
