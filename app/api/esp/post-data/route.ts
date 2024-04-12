@@ -20,7 +20,7 @@ export async function PATCH(req: Request) {
 
     return NextResponse.json(
       { Esp_Data: esp, message: "Extraction Successfull" },
-      { status: 201 }
+      { status: 200 }
     );
   } catch(error) {
     return NextResponse.json(

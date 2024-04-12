@@ -11,10 +11,9 @@ export async function GET(req: Request) {
     })
 
     console.log(data)
-    revalidatePath(req.url)
     return NextResponse.json(
       { Esp_Data: data, message: "Extraction Successfull" },
-      { status: 201, headers: { 'Cache-Control': 'no-store, max-age=0' } }
+      { status: 200, headers: { 'Cache-Control': 'no-store, max-age=0' } }
     );
   } catch(error) {
     return NextResponse.json(
