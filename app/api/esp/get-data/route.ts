@@ -4,7 +4,8 @@ import { NextResponse } from "next/server";
 
 export async function GET(req: Request) {
   try {
-    const data = await db.espware.findFirst(
+    console.log(req.url)
+    const data = await db.espware.findUnique(
       {
         where: { id: "thisisid" },
       }
