@@ -7,7 +7,7 @@ import { cookies } from "next/headers";
 
 export async function GET(req: Request) {
   try {
-    const esp = await db.espware.findUnique({
+    const esp = await db.espware.findMany({
       where: { id: "thisisid" },
     })
 
