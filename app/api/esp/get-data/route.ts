@@ -7,7 +7,7 @@ import { cookies } from "next/headers";
 
 export async function GET(req: Request) {
   try {
-    const esp = await db.espware.findMany()
+    const esp = await db.espware.findFirst()
 
     return NextResponse.json(
       { Esp_Data: esp, message: "Extraction Successfull" },
