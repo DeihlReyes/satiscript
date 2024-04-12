@@ -4,11 +4,11 @@ import { NextResponse } from "next/server";
 
 export async function GET(req: Request) {
   try {
-    const data = await db.espware.findFirst({
-      orderBy: {
-        updatedAt: "desc"
+    const data = await db.espware.findFirst(
+      {
+        where: { id: "thisisid" },
       }
-    })
+    )
 
     console.log(data)
     return NextResponse.json(
