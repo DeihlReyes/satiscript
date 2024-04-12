@@ -7,8 +7,11 @@ import { cookies } from "next/headers";
 
 export async function GET(req: Request) {
   try {
-    const data = await db.espware.findUnique({
-      where: { id: "thisisid" },
+    // fetch the data in which the latest updatedat is the most recent
+    const data = await db.espware.findFirst({
+      orderBy: {
+        updatedAt: "desc"
+      }
     })
 
     return NextResponse.json(
