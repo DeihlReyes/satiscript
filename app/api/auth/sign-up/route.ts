@@ -7,15 +7,21 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
 
-    const { email, password } = regSchema.parse(body);
+    console.log(body);
+
+    const { firstName, lastName, username, email, password  } = regSchema.parse(body);
 
     const existingEmail = await db.user.findUnique({
       where: { email: email },
     });
 
-    if (existingEmail) {
+    const existingUsername = await db.user.findUnique({
+      where: { username: username },
+    });
+
+    if (existingEmail || existingUsername) {
       return NextResponse.json(
-        { user: null, message: "Email already been used" },
+        { user: null, message: "User already exist" },
         { status: 409 }
       );
     }
@@ -24,6 +30,9 @@ export async function POST(req: Request) {
 
     const response = await db.user.create({
       data: {
+        firstName: firstName,
+        lastName: lastName,
+        username: username,
         email: email,
         password: hashedPassword,
       },

@@ -4,13 +4,12 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { set, z } from "zod"
+import { z } from "zod"
 import { Button } from "@/components/ui/button"
 import {
   Form,
@@ -23,39 +22,23 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { useState } from "react";
+import { toast } from "./ui/use-toast";
+import { detailsSchema, passwordSchema } from "@/lib/validation";
 
- 
-const detailsSchema = z.object({
-  firstname: z.string(),
-  lastname: z.string(),
-  username: z.string(),
-})
+
 
 type Details = z.infer<typeof detailsSchema>
 
-const passwordSchema = z.object({
-  currentPassword: z.string(),
-  newPassword: z.string(),
-  confirmPassword: z.string()
-}).refine((data) => data.newPassword === data.confirmPassword, {
-  path: ["confirmPassword"],
-  message: "Password do not match",
-});
 
-
-const AccountTab = () => {
-  // i want the button to say Edit when the form is not in edit mode and Save when the form is in edit mode
-  // i want the form to be in edit mode when the page loads
-  // i want the form to be in edit mode when the user clicks the Edit button
-
+const AccountTab = (user: Details) => {
   const [editMode, setEditMode] = useState(false);
 
-  const formDetials = useForm<z.infer<typeof detailsSchema>>({
+  const formDetails = useForm<z.infer<typeof detailsSchema>>({
     resolver: zodResolver(detailsSchema),
     defaultValues: {
-      firstname: "John",
-      lastname: "Doe",
-      username: "johndoe"
+      firstName: user.firstName || "",
+      lastName: user.lastName || "",
+      username: user.username || "",
     },
   });
 
@@ -68,13 +51,81 @@ const AccountTab = () => {
     },
   });
 
-  const onSubmit = formDetials.handleSubmit((values: z.infer<typeof detailsSchema>) => {
-    console.log(values);
-    setEditMode(false); // Switch to view mode after submitting
+  const onSubmit = formDetails.handleSubmit(async (values: z.infer<typeof detailsSchema>) => {
+    if (values.firstName === user.firstName && values.lastName === user.lastName && values.username === user.username) {
+      setEditMode(false);
+      return;
+    }
+    const response = await fetch("/api/profile/details", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        firstName: values.firstName,
+        lastName: values.lastName,
+        username: values.username
+      }),
+    });
+    if (response.ok) {
+      toast({
+          title: "Account details updated",
+          description: "Details has been updated successfully",
+        })
+      setEditMode(false);
+    } else {
+      toast({
+          title: "Error",
+          description: "An error occurred while updating your details",
+          variant: "destructive",
+        })
+    }
   });
 
-  function onSubmitPassword(values: z.infer<typeof passwordSchema>) {
-    console.log(values);
+  const onSubmitPassword = async (values: z.infer<typeof passwordSchema>) => {
+    if (values.newPassword === values.currentPassword) {
+      toast({
+        title: "Error",
+        description: "New password cannot be the same as the current password",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (values.newPassword !== values.confirmPassword) {
+      toast({
+        title: "Error",
+        description: "Passwords do not match",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    const response = await fetch("/api/profile/password", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        currentPassword: values.currentPassword,
+        newPassword: values.newPassword,
+        confirmPassword: values.confirmPassword
+      }),
+    });
+
+    if (response.ok) {
+      formPassword.reset();
+      toast({
+        title: "Password updated",
+        description: "Password has been updated successfully",
+      });
+    } else {
+      toast({
+        title: "Error",
+        description: "An error occurred while updating your password",
+        variant: "destructive",
+      });
+    }
   }
   
   const handleClick = () => {
@@ -95,12 +146,12 @@ const AccountTab = () => {
         <CardContent>
           <div className="max-w-md py-8">
             <h1 className="font-bold text-xl mb-6">Details</h1>
-            <Form {...formDetials}>
+            <Form {...formDetails}>
               <form onSubmit={onSubmit} className="lg:space-y-6">
                 <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-0">
                   <FormField
-                    control={formDetials.control}
-                    name="firstname"
+                    control={formDetails.control}
+                    name="firstName"
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>First Name</FormLabel>
@@ -112,8 +163,8 @@ const AccountTab = () => {
                     )}
                   />
                   <FormField
-                    control={formDetials.control}
-                    name="firstname"
+                    control={formDetails.control}
+                    name="lastName"
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>Last Name</FormLabel>
@@ -126,7 +177,7 @@ const AccountTab = () => {
                   />
                 </div>
                 <FormField
-                    control={formDetials.control}
+                    control={formDetails.control}
                     name="username"
                     render={({ field }) => (
                       <FormItem>
@@ -134,9 +185,6 @@ const AccountTab = () => {
                         <FormControl>
                           <Input disabled={!editMode} {...field} />
                         </FormControl>
-                        <FormDescription>
-                          This is your public display name.
-                        </FormDescription>
                         <FormMessage />
                       </FormItem>
                     )}

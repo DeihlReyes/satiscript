@@ -1,6 +1,5 @@
 import Navbar from "@/components/navbar";
 import { Sidebar } from "@/components/sidebar";
-import { ThemeProvider } from "@/providers/theme-provider";
 
 const MainLayout = async ({ children }: { children: React.ReactNode }) => {
   return (
@@ -10,14 +9,7 @@ const MainLayout = async ({ children }: { children: React.ReactNode }) => {
       </div>
       <div className="md:pl-64">
         <Navbar />
-        <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            {children}
-        </ThemeProvider>
+        {children}
       </div>
     </section>
   );

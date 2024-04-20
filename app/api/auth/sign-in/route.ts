@@ -41,10 +41,16 @@ export async function POST(req: Request) {
     console.log("Session:", session);
     cookies().set("session", session, { expires, httpOnly: true });
 
+    const response = await db.user.update({
+      where: { id: user },
+      data: { token: session },
+    });
+
     return NextResponse.json(
-      { user: user, message: "Login Successfull" },
+      { user: user, response: response, message: "Login Successfull" },
       { status: 201 }
     );
+
   } catch (error) {
     return NextResponse.json(
       { message: "Internal Server Error" },

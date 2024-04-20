@@ -44,12 +44,20 @@ const SignUpForm = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        firstName: values.firstName,
+        lastName: values.lastName,
+        username: values.username,
         email: values.email,
         password: values.password,
       }),
     });
 
     if (response.ok) {
+      toast({
+        title: "Account created successfully!",
+        description:
+          "You can now sign in to your account and start using Satiscript.",
+      });
       router.push("/sign-in");
     } else {
       toast({
@@ -62,7 +70,7 @@ const SignUpForm = () => {
   };
 
   return (
-    <Card className="lg:w-[400px] h-full shadow-md shadow-slate-200 p-4">
+    <Card className="lg:w-[500px] h-full p-4">
       <CardHeader className="text-center space-y-2">
         <CardTitle>Satiscript</CardTitle>
         <CardDescription>
@@ -72,15 +80,52 @@ const SignUpForm = () => {
       <CardContent>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="w-full">
-            <div className="space-y-2">
+            <div className="space-y-2 lg:space-y-6">
+              <div className="flex flex-row justify-between gap-4">
+                <FormField
+                  control={form.control}
+                  name="firstName"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <Input placeholder="First name" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="lastName"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <Input placeholder="Last name" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+              <FormField
+                control={form.control}
+                name="username"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <Input placeholder="Username" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
               <FormField
                 control={form.control}
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Email</FormLabel>
                     <FormControl>
-                      <Input placeholder="mail@example.com" {...field} />
+                      <Input placeholder="Email" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -91,11 +136,10 @@ const SignUpForm = () => {
                 name="password"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Password</FormLabel>
                     <FormControl>
                       <Input
                         type="password"
-                        placeholder="Enter your password"
+                        placeholder="Password"
                         {...field}
                       />
                     </FormControl>
@@ -108,10 +152,9 @@ const SignUpForm = () => {
                 name="confirmPassword"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Re-Enter your password</FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="Re-Enter your password"
+                        placeholder="Confirm password"
                         type="password"
                         {...field}
                       />
