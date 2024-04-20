@@ -71,6 +71,7 @@ const AccountTab = (user: Details) => {
       toast({
           title: "Account details updated",
           description: "Details has been updated successfully",
+          duration: 5000,
         })
       setEditMode(false);
     } else {
@@ -78,6 +79,7 @@ const AccountTab = (user: Details) => {
           title: "Error",
           description: "An error occurred while updating your details",
           variant: "destructive",
+          duration: 5000,
         })
     }
   });
@@ -88,6 +90,7 @@ const AccountTab = (user: Details) => {
         title: "Error",
         description: "New password cannot be the same as the current password",
         variant: "destructive",
+        duration: 5000,
       });
       return;
     }
@@ -97,6 +100,7 @@ const AccountTab = (user: Details) => {
         title: "Error",
         description: "Passwords do not match",
         variant: "destructive",
+        duration: 5000,
       });
       return;
     }
@@ -118,12 +122,14 @@ const AccountTab = (user: Details) => {
       toast({
         title: "Password updated",
         description: "Password has been updated successfully",
+        duration: 5000,
       });
     } else {
       toast({
         title: "Error",
         description: "An error occurred while updating your password",
         variant: "destructive",
+        duration: 5000,
       });
     }
   }

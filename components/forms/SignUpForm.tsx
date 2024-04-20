@@ -57,6 +57,7 @@ const SignUpForm = () => {
         title: "Account created successfully!",
         description:
           "You can now sign in to your account and start using Satiscript.",
+        duration: 5000,
       });
       router.push("/sign-in");
     } else {
@@ -65,6 +66,7 @@ const SignUpForm = () => {
         title: "Uh oh! Something went wrong.",
         description:
           "There was an error in the sign up process. Please try again.",
+        duration: 5000,
       });
     }
   };

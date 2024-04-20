@@ -5,6 +5,8 @@ import { Shapes } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { usePathname, useRouter } from "next/navigation";
 import routes from "@/lib/constant";
+import Image from 'next/image'
+import logo from '@/public/assets/Satiscript.svg'
 
 const SideBarItems = () => {
   const pathname = usePathname();
@@ -15,11 +17,15 @@ const SideBarItems = () => {
   };
   return (
     <div>
-      <Link href="/dashboard" className="mb-14 flex items-center pl-3">
-        <div className="relative mr-4 h-8 w-8">
-          <Shapes className="absolute h-full w-full text-primary" />
-        </div>
-        <h1 className="text-2xl font-bold">Satiscript</h1>
+      <Link href="/dashboard" className="mb-14 flex items-center pl-3 gap-3">
+        <Image
+          src={logo}
+          alt="Satiscript"
+          width={20}
+          height={20}
+          className="mr-3"
+        />
+        <h1 className="text-lg lg:text-2xl font-bold">Satiscript</h1>
       </Link>
       <ul className="space-y-1">
         {routes.map((route) => (
