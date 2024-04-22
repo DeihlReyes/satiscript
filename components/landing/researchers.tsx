@@ -13,9 +13,9 @@ import adviser from "@/public/assets/adviser.png";
 const Reseachers = () => {
   return (
     <div
-      className="flex flex-col justify-start items-center w-full h-full py-32"
+      className="flex flex-col justify-start items-center w-full h-fit py-16 lg:py-32"
       id="researchers">
-      <h2 className="text-7xl font-bold mb-6">Meet the Team</h2>
+      <h2 className="text-4xl lg:text-7xl font-bold mb-6">Meet the Team</h2>
       <p className="text-center">
         Step into the core of Satiscript&apos;s essence, where proficiency
         intertwines with passion. Allow us to introduce the remarkable
@@ -41,7 +41,7 @@ const Reseachers = () => {
           <p className="mt-4 text-secondary-foreground">Ultimate Thesis Adviser</p>
         </CardFooter>
       </Card>
-      <div className="flex flex-row justify-between items-center h-full w-full mt-16">
+      <div className="flex flex-col gap-5 lg:flex-row justify-between items-center h-full w-full mt-16">
         {team.map(
           (member, index) => (
             <Card

@@ -8,7 +8,7 @@ const LandingPage = () => {
   return (
     <main>
       <LandingNavbar />
-      <section className='max-w-7xl w-full flex flex-col justify-center items-center mx-auto'>
+      <section className='z-0 max-w-7xl w-full flex flex-col justify-center items-center mx-auto px-8 h-full'>
         <Hero />
         <Features />
         <Reseachers />
