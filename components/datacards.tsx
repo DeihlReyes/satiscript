@@ -1,49 +1,68 @@
+import { Phone, Timer, Star, StarOff } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "./ui/card";
 
 const DataCards = () => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 w-full">
-      <Card className="w-full text-center dark:shadow-none shadow-md shadow-slate-200">
-        <CardHeader>
-          <CardTitle className="text-base font-semibold">Total Call</CardTitle>
+      <Card className="bg-blue-500 text-white shadow-sm shadow-slate-400">
+        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 pt-3">
+          <CardTitle className="text-xs font-medium md:text-sm">
+            Total Calls
+          </CardTitle>
+          <Phone className="h-6 w-6" />
         </CardHeader>
-        <CardContent>
-          <p className="font-semibold text-4xl lg:text-5xl">50</p>
+        <CardContent className="pb-3">
+          <div className="mb-1 text-3xl font-bold leading-none md:text-5xl">
+            50
+          </div>
+          <p className="text-xs text-white md:text-sm">Overall calls made</p>
         </CardContent>
       </Card>
 
-      <Card className="w-full text-center dark:shadow-none shadow-md shadow-slate-200">
-        <CardHeader>
-          <CardTitle className="text-base lg:text-lg font-semibold">
+      <Card className="bg-yellow-500 text-white shadow-sm shadow-slate-400">
+        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 pt-3">
+          <CardTitle className="text-xs font-medium md:text-sm">
             Average Call Time
           </CardTitle>
+          <Timer className="h-6 w-6" />
         </CardHeader>
-        <CardContent>
-          <p className="font-semibold text-4xl lg:text-5xl">
-            4 <span className="font-light text-xl">mins</span>
+        <CardContent className="pb-3">
+          <div className="mb-1 text-3xl font-bold leading-none md:text-5xl">
+            50 <span className="font-light text-xl">mins</span>
+          </div>
+          <p className="text-xs text-white md:text-sm">Length of call</p>
+        </CardContent>
+      </Card>
+
+      <Card className="bg-green-500 text-white shadow-sm shadow-slate-400">
+        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 pt-3">
+          <CardTitle className="text-xs font-medium md:text-sm">
+            Satisfied Callers
+          </CardTitle>
+          <Star className="h-6 w-6" />
+        </CardHeader>
+        <CardContent className="pb-3">
+          <div className="mb-1 text-3xl font-bold leading-none md:text-5xl">
+            50
+          </div>
+          <p className="text-xs text-white md:text-sm">
+            Number of callers satisfied
           </p>
         </CardContent>
       </Card>
 
-      <Card className="w-full text-center dark:shadow-none shadow-md shadow-slate-200">
-        <CardHeader>
-          <CardTitle className="text-base lg:text-lg font-semibold">
-            Satisfied Callers
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p className="font-semibold text-4xl lg:text-5xl">30</p>
-        </CardContent>
-      </Card>
-
-      <Card className="w-full text-center dark:shadow-none shadow-md shadow-slate-200">
-        <CardHeader>
-          <CardTitle className="text-base lg:text-lg font-semibold">
+      <Card className="bg-blue-500 text-white shadow-sm shadow-slate-400">
+        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 pt-3">
+          <CardTitle className="text-xs font-medium md:text-sm">
             Dissatisfied Callers
           </CardTitle>
+          <StarOff className="h-6 w-6" />
         </CardHeader>
-        <CardContent>
-          <p className="font-semibold text-4xl lg:text-5xl">20</p>
+        <CardContent className="pb-3">
+          <div className="mb-1 text-3xl font-bold leading-none md:text-5xl">
+            50
+          </div>
+          <p className="text-xs text-white md:text-sm">Number of callers dissatisfied</p>
         </CardContent>
       </Card>
     </div>

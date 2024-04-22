@@ -59,7 +59,7 @@ const data = [
 
 export function LineChartComponent() {
   return (
-    <Card className="p-2 lg:p-6 w-full h-full dark:shadow-none shadow-md shadow-slate-200">
+    <Card className="p-2 lg:p-6 w-full h-full dark:shadow-none shadow-md shadow-slate-400">
       <CardHeader>
         <CardTitle className="text-base lg:text-lg font-semibold">Performance Trend</CardTitle>
       </CardHeader>

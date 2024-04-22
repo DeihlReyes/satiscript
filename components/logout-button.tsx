@@ -1,5 +1,5 @@
 import { logout } from "@/lib/auth";
-import { Button } from "./ui/button";
+import { LogOut } from "lucide-react";
 import { redirect } from "next/navigation";
 import {
   AlertDialog,
@@ -17,8 +17,11 @@ import {
 const LogoutButton = () => {
   return (
         <AlertDialog>
-          <AlertDialogTrigger className="w-full py-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90">
-              Sign out
+          <AlertDialogTrigger className="flex flex-row justify-center items-center gap-4 font-semibold w-full py-2 rounded-md bg-primary text-primary-foreground dark:text-foreground hover:bg-primary/90">
+            <p>
+              Logout
+            </p>
+            <LogOut className="w-4 h-4" />
           </AlertDialogTrigger>
           <AlertDialogContent>
             <AlertDialogHeader>
@@ -36,7 +39,7 @@ const LogoutButton = () => {
                   redirect("/sign-in");
                 }}>
                 <AlertDialogCancel>Cancel</AlertDialogCancel>
-                <AlertDialogAction type="submit">
+                <AlertDialogAction className="dark:text-foreground" type="submit">
                   Sign out
                 </AlertDialogAction>
               </form>

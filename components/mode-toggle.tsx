@@ -19,7 +19,7 @@ export function ModeToggle() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className="w-28">
+        <Button className="w-28 dark:text-foreground">
           {theme!.charAt(0).toUpperCase() + theme!.slice(1)}
         </Button>
       </DropdownMenuTrigger>

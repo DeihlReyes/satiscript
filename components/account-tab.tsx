@@ -195,7 +195,7 @@ const AccountTab = (user: Details) => {
                       </FormItem>
                     )}
                   />
-                <Button className="w-20 mt-8 lg:mt-0" type="button" onClick={handleClick}>{
+                <Button className="w-20 mt-8 lg:mt-0 dark:text-foreground" type="button" onClick={handleClick}>{
                   editMode ? "Save" : "Edit"
                 }</Button>
               </form>
@@ -247,7 +247,7 @@ const AccountTab = (user: Details) => {
                       </FormItem>
                     )}
                   />
-                <Button className="mt-8 lg:mt-0" type="submit">Change Password</Button>
+                <Button className="mt-8 lg:mt-0 dark:text-foreground" type="submit">Change Password</Button>
               </form>
             </Form>
           </div>

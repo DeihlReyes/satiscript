@@ -74,6 +74,11 @@ const config = {
       },
     },
   },
+  variants: {
+    extend: {
+      textColor: ['group-hover'],
+    },
+  },
   plugins: [require("tailwindcss-animate")],
 } satisfies Config
 

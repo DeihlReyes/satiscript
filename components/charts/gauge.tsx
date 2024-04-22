@@ -21,10 +21,18 @@ const data = [
   { name: 'B', value: 45, color: '#00ff00' },
   { name: 'C', value: 25, color: '#0000ff' },
 ];
-const cx = 226;
-const cy = 225;
-const iR = 120;
-const oR = 200;
+
+let width = typeof window !== 'undefined' ? window.innerWidth : 0;
+
+if (typeof window !== 'undefined') {
+    window.onresize = () => {
+        width = window.innerWidth;
+    };
+}
+const cx = width > 2000 ? 225 : 141;
+const cy = 220;
+const iR = width > 2000 ? 100 : 70;
+const oR = width > 2000 ? 200 : 130;
 const value = 50;
 
 const needle = (value: number, data: any[], cx: number, cy: number, iR: number, oR: number, color: string | undefined) => {
@@ -55,7 +63,7 @@ const needle = (value: number, data: any[], cx: number, cy: number, iR: number, 
 
 export function GaugeChart() {
   return (
-    <Card className="p-2 lg:p-6 w-full lg:w-1/3 h-full dark:shadow-none shadow-md shadow-slate-200">
+    <Card className="p-2 lg:p-6 w-full lg:w-1/3 h-full dark:shadow-none shadow-md shadow-slate-400">
       <CardHeader>
         <CardTitle className="text-base lg:text-lg font-semibold">Call Volume</CardTitle>
       </CardHeader>

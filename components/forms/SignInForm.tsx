@@ -105,7 +105,7 @@ const SignInForm = () => {
               />
             </div>
             <CardFooter className="p-0">
-              <Button className="w-full mt-6" type="submit">
+              <Button className="w-full mt-6 dark:text-foreground" type="submit">
                 Sign in
               </Button>
             </CardFooter>
