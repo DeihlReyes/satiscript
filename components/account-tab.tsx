@@ -153,16 +153,16 @@ const AccountTab = (user: Details) => {
           <div className="max-w-md py-8">
             <h1 className="font-bold text-xl mb-6">Details</h1>
             <Form {...formDetails}>
-              <form onSubmit={onSubmit} className="lg:space-y-6">
-                <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-0">
+              <form onSubmit={onSubmit} className="space-y-6">
+                <div className="flex flex-col lg:flex-row justify-between lg:items-center mb-0 space-y-6 lg:space-y-0 lg:gap-10 w-full">
                   <FormField
                     control={formDetails.control}
                     name="firstName"
                     render={({ field }) => (
-                      <FormItem>
+                      <FormItem className="w-full">
                         <FormLabel>First Name</FormLabel>
                         <FormControl>
-                          <Input disabled={!editMode} {...field} />
+                          <Input className="w-full" disabled={!editMode} {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -172,10 +172,10 @@ const AccountTab = (user: Details) => {
                     control={formDetails.control}
                     name="lastName"
                     render={({ field }) => (
-                      <FormItem>
+                      <FormItem className="w-full">
                         <FormLabel>Last Name</FormLabel>
                         <FormControl>
-                          <Input disabled={!editMode} {...field} />
+                          <Input className="w-full" disabled={!editMode} {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>

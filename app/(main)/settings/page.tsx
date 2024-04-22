@@ -1,11 +1,19 @@
 import AccountTab from "@/components/account-tab"
 import GeneralTab from "@/components/general-tab"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { getSession } from "@/lib/auth";
 import { getProfile } from "@/lib/profile";
+import { redirect } from "next/navigation";
 
 
 const Settings = async () => {
+  const session = await getSession();
   const user = await getProfile();
+
+  if (!session) {
+    redirect("/sign-in");
+  }
+
   return (
     <div className="flex h-full w-full px-8 lg:px-12 py-8">
       <Tabs defaultValue="account" className="w-full">

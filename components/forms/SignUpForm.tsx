@@ -72,7 +72,7 @@ const SignUpForm = () => {
   };
 
   return (
-    <Card className="lg:w-[500px] h-full p-4">
+    <Card className="w-[350px] lg:w-[500px] h-full p-4">
       <CardHeader className="text-center space-y-2">
         <CardTitle>Satiscript</CardTitle>
         <CardDescription>
