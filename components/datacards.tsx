@@ -51,7 +51,7 @@ const DataCards = () => {
         </CardContent>
       </Card>
 
-      <Card className="bg-blue-500 text-white shadow-sm shadow-slate-400">
+      <Card className="bg-red-500 text-white shadow-sm shadow-slate-400">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 pt-3">
           <CardTitle className="text-xs font-medium md:text-sm">
             Dissatisfied Callers
