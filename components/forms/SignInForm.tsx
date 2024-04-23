@@ -56,7 +56,7 @@ const SignInForm = () => {
         variant: "destructive",
         title: "Uh oh! Something went wrong.",
         description: "There was an error logging you in. Please try again.",
-        duration: 5000,
+        duration: 3000,
       });
     }
   };

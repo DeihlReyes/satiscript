@@ -10,7 +10,7 @@ import {
 
 const Features = () => {
   return (
-    <div className="flex flex-col justify-center items-center w-full h-full py-16 lg:py-32 px-0 lg:px-24">
+    <div id="features" className="flex flex-col justify-center items-center w-full h-full py-16 lg:py-32 px-0 lg:px-24">
       <h2 className="text-4xl lg:text-7xl font-bold mb-6">Features</h2>
       <p className="w-full max-w-5xl text-center">
         Level up customer satisfaction with Satiscript&apos;s, using our system
@@ -23,7 +23,7 @@ const Features = () => {
           (feature) => (      
             <li
               key={feature.title}>
-              <Card className="w-full lg:w-[27rem] h-full hover:shadow-md hover:shadow-slate-700 transition-all ease-linear duration-200">
+              <Card className="w-full lg:w-[27rem] h-full hover:shadow-md hover:shadow-slate-500 transition-all ease-linear duration-150">
                 <CardHeader className="flex flex-row justify-between items-center">
                   <CardTitle>{feature.title}</CardTitle>
                   <feature.icon className="h-10 w-10" />
