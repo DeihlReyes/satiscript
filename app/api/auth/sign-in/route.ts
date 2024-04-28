@@ -46,8 +46,13 @@ export async function POST(req: Request) {
       data: { token: session },
     });
 
+    const userDetails = {
+      id: existingUser.id,
+      name: existingUser.firstName + " " + existingUser.lastName,
+    }
+
     return NextResponse.json(
-      { user: user, response: response, message: "Login Successfull" },
+      { user: userDetails, response: response, message: "Login Successfull" },
       { status: 201 }
     );
 
