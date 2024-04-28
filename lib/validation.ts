@@ -57,11 +57,13 @@ export const passwordSchema = z.object({
   message: "Password do not match",
 });
 
+const durationPattern = /^(\d{2}):(\d{2}):(\d{2})$/;
+
 export const callsSchema = z.object({
   id: z.string(),
   time: z.string(),
   userId: z.string(),
-  duration: z.string(),
+  duration: z.string().regex(durationPattern, { message: "Duration must be in HH:MM:SS format" }),
   satisfaction: z.string(),
   scriptlink: z.string().url(),
   createdAt: z.coerce.date(),

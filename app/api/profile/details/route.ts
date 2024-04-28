@@ -13,7 +13,7 @@ export async function PUT(req: Request) {
       return new Response(null, { status: 401 });
     }
     const body = await req.json();
-    console.log(body);
+
     const { firstName, lastName, username } = detailsSchema.parse(body);
     // check if the user exist
     const user = await db.user.findUnique({

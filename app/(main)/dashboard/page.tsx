@@ -56,16 +56,28 @@ function prepareSatisfactionData(calls: Call[]) {
 
 function prepareDataCardData(calls: Call[]) {
   const totalCalls = calls.length;
-  const satisfiedCustomers = calls.filter((call) => call.satisfaction === "satisfied").length;
-  const dissatisfiedCustomers = calls.filter((call) => call.satisfaction === "dissatisfied").length;
-  const averageCallTime = Math.round(calls.reduce((acc, call) => acc + parseInt(call.duration), 0) / calls.length);
+  const satisfiedCustomers = calls.filter(call => call.satisfaction === "satisfied").length;
+  const dissatisfiedCustomers = calls.filter(call => call.satisfaction === "dissatisfied").length;
 
+  // Helper function to convert HH:MM:SS to total seconds
+  function durationToSeconds(duration: string): number {
+      const [hours, minutes, seconds] = duration.split(':').map(Number);
+      return hours * 3600 + minutes * 60 + seconds;
+  }
 
+  // Calculate the total duration in seconds
+  const totalSeconds = calls.reduce((acc, call) => acc + durationToSeconds(call.duration), 0);
+
+  // Convert total seconds to average minutes
+  const averageMinutes = totalCalls > 0 ? (totalSeconds / totalCalls) / 60 : 0;
+
+  // Round to two decimal places for precision
+  const averageCallTime = parseFloat(averageMinutes.toFixed(2));
   const data = {
-    totalCalls: totalCalls,
-    averageCallTime: averageCallTime,
-    satisfiedCustomers: satisfiedCustomers,
-    dissatisfiedCustomers: dissatisfiedCustomers
+      totalCalls,
+      averageCallTime,
+      satisfiedCustomers,
+      dissatisfiedCustomers
   };
 
   return data;

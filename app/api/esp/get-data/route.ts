@@ -11,7 +11,6 @@ export async function GET(req: Request) {
       }
     )
 
-    console.log(data)
     return NextResponse.json(
       { Esp_Data: data, message: "Extraction Successfull" },
       { status: 200, headers: { 'Cache-Control': 'no-store, max-age=0' } }

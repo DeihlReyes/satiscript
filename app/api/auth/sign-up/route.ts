@@ -7,8 +7,6 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
 
-    console.log(body);
-
     const { firstName, lastName, username, email, password  } = regSchema.parse(body);
 
     const existingEmail = await db.user.findUnique({

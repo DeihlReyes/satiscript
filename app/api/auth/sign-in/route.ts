@@ -33,12 +33,9 @@ export async function POST(req: Request) {
       );
     }
 
-    console.log("User:", user);
-
     const expires = new Date(Date.now() + 12 * 60 * 60 * 1000);
     const session = await encrypt({ user, expires });
-
-    console.log("Session:", session);
+    
     cookies().set("session", session, { expires, httpOnly: true });
 
     const response = await db.user.update({
