@@ -17,8 +17,8 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { createCallsSchema } from "@/lib/validation"
 
-import { callsSchema } from "@/components/table/data/schema"
 
 interface DataTableRowActionsProps<TData> {
   row: Row<TData>
@@ -27,7 +27,7 @@ interface DataTableRowActionsProps<TData> {
 export function DataTableRowActions<TData>({
   row,
 }: DataTableRowActionsProps<TData>) {
-  const task = callsSchema.parse(row.original)
+  const task = createCallsSchema.parse(row.original)
 
   return (
     <DropdownMenu>

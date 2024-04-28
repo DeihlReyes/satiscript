@@ -1,5 +1,10 @@
-// create a function that takes a date and formats it like 11-24-2023
-
 export function formatDate(date: Date) {
-  return `${date.getMonth() + 1}-${date.getDate()}-${date.getFullYear()}`
+  if (!(date instanceof Date) || isNaN(date.getTime())) {
+    throw new Error('Invalid date object provided.');
+  }
+  console.log(date);
+  const month = (date.getMonth() + 1).toString().padStart(2, '0');
+  const day = date.getDate().toString().padStart(2, '0');
+  const year = date.getFullYear();
+  return `${month}-${day}-${year}`;
 }

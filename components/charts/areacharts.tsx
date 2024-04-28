@@ -11,34 +11,14 @@ import {
 } from "recharts";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-const data = [
-  {
-    month: "January",
-    calls: 412,
-  },
-  {
-    month: "February",
-    calls: 125,
-  },
-  {
-    month: "March",
-    calls: 532,
-  },
-  {
-    month: "April",
-    calls: 153,
-  },
-  {
-    month: "May",
-    calls: 231,
-  },
-  {
-    month: "June",
-    calls: 312,
-  },
-];
+interface AreaChartProps {
+  data: {
+    month: string;
+    calls: number;
+  }[];
+}
 
-export function AreaChartComponent() {
+export function AreaChartComponent({ data }: AreaChartProps) {
   return (
     <Card className="p-2 lg:p-6 w-full lg:w-2/3 h-full dark:shadow-none shadow-md shadow-slate-400">
       <CardHeader>

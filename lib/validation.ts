@@ -56,3 +56,19 @@ export const passwordSchema = z.object({
   path: ["confirmPassword"],
   message: "Password do not match",
 });
+
+export const callsSchema = z.object({
+  id: z.string(),
+  time: z.string(),
+  userId: z.string(),
+  duration: z.string(),
+  satisfaction: z.string(),
+  scriptlink: z.string().url(),
+  createdAt: z.coerce.date(),
+  updatedAt: z.coerce.date(),
+})
+
+// create a version of callsSchema that does not require the id field
+export const createCallsSchema = callsSchema.omit({ id: true, createdAt: true, updatedAt: true})
+
+export type Calls = z.infer<typeof callsSchema>

@@ -1,28 +1,25 @@
 "use client"
 
 import { ColumnDef } from "@tanstack/react-table"
-import { Checkbox } from "@/components/ui/checkbox"
-
-import { Calls } from "@/components/table/data/schema"
 import { DataTableColumnHeader } from "./data-table-column-header"
-import { DataTableRowActions } from "./data-table-row-actions"
 import Link from "next/link"
 import { formatDate } from "@/lib/formatter"
+import { Calls } from "@/lib/validation"
 
 export const columns: ColumnDef<Calls>[] = [
   {
     accessorKey: "id",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Call" />
+      <DataTableColumnHeader column={column} title="Call ID" />
     ),
     cell: ({ row }) => <div className="w-full pr-2">{row.getValue("id")}</div>,
   },
   {
-    accessorKey: "date",
+    accessorKey: "createdAt",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Date" />
     ),
-    cell: ({ row }) => <div className="w-full pr-2">{formatDate(row.getValue("date"))}</div>,
+    cell: ({ row }) => <div className="w-full pr-2">{formatDate(row.getValue("createdAt"))}</div>,
   },
   {
     accessorKey: "time",
@@ -55,11 +52,11 @@ export const columns: ColumnDef<Calls>[] = [
     },
   },
   {
-    accessorKey: "script",
+    accessorKey: "scriptlink",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Script" />
     ),
-    cell: ({ row }) => <div className="w-full pr-2 text-blue-600"><Link href={row.getValue("script")}>Download</Link></div>,
+    cell: ({ row }) => <div className="w-full pr-2 text-blue-600"><Link target="_blank" href={row.getValue("scriptlink")}>Download</Link></div>,
     enableSorting: false,
     enableHiding: false,
   },

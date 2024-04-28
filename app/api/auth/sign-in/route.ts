@@ -10,7 +10,7 @@ export async function POST(req: Request) {
     const body = await req.json();
 
     const { email, password } = signinSchema.parse(body);
-
+     
     const existingUser = await db.user.findUnique({
       where: { email: email },
     });

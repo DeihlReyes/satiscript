@@ -1,6 +1,7 @@
 import { SignJWT, jwtVerify } from "jose";
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
+import { db } from "./db";
 
 const secretKey = "secret";
 const key = new TextEncoder().encode(secretKey);
@@ -21,8 +22,15 @@ export async function decrypt(input: string): Promise<any> {
 }
 
 export async function logout() {
+  const session = await getSession();
   // Destroy the session
   cookies().set("session", "", { expires: new Date(0) });
+
+  // remove the token from the user
+  const response = await db.user.update({
+    where: { id: session.user },
+    data: { token: null },
+  });
 }
 
 export async function getSession() {

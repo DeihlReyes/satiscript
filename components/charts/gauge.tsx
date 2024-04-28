@@ -9,18 +9,12 @@ import {
 } from "recharts";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-interface DataItem {
-  name: string;
-  value: number;
-  color: string;
+interface SatisfactionData {
+  satisfied: number;
+  dissatisfied: number;
 }
 
 const RADIAN = Math.PI / 180;
-const data = [
-  { name: 'A', value: 80, color: '#ff0000' },
-  { name: 'B', value: 45, color: '#00ff00' },
-  { name: 'C', value: 25, color: '#0000ff' },
-];
 
 let width = typeof window !== 'undefined' ? window.innerWidth : 0;
 
@@ -33,35 +27,39 @@ const cx = width > 2000 ? 225 : 141;
 const cy = 220;
 const iR = width > 2000 ? 100 : 70;
 const oR = width > 2000 ? 200 : 130;
-const value = 50;
 
-const needle = (value: number, data: any[], cx: number, cy: number, iR: number, oR: number, color: string | undefined) => {
-  let total = 0;
-  data.forEach((v) => {
-    total += v.value;
-  });
-  const ang = 180.0 * (1 - value / total);
-  const length = (iR + 2 * oR) / 3;
-  const sin = Math.sin(-RADIAN * ang);
-  const cos = Math.cos(-RADIAN * ang);
-  const r = 5;
-  const x0 = cx + 5;
-  const y0 = cy + 5;
-  const xba = x0 + r * sin;
-  const yba = y0 - r * cos;
-  const xbb = x0 - r * sin;
-  const ybb = y0 + r * cos;
-  const xp = x0 + length * cos;
-  const yp = y0 + length * sin;
+const needle = (percentage: number, cx: number, cy: number, iR: number, oR: number, color: string) => {
+  const radius = (iR + oR) / 2; // Needle should be between inner and outer radius
+  const value = percentage / 100; // Convert percentage to a decimal
+  const angle = 180 - (value * 180); // Calculate the angle for the semi-circle
+  const endAngleRad = (angle * RADIAN); // Convert angle to radians
 
-  return [
-    <circle key={null} cx={x0} cy={y0} r={r} fill={color} stroke="none" />,
-    <path key={null} d={`M${xba} ${yba}L${xbb} ${ybb} L${xp} ${yp} L${xba} ${yba}`} stroke="#none" fill={color} />,
-  ];
+  // Calculate end position of needle based on angle
+  const x = cx + radius * Math.cos(endAngleRad);
+  const y = cy - radius * Math.sin(endAngleRad);
+
+  // Define the path for the needle shape
+  const pathD = `M ${cx - radius / 10} ${cy} L ${x} ${y} L ${cx + radius / 10} ${cy}`;
+  const circleCX = cx + radius * Math.cos(endAngleRad);
+  const circleCY = cy - radius * Math.sin(endAngleRad);
+
+  return (
+    <>
+      <path d={pathD} fill={color} />
+      <circle cx={circleCX} cy={circleCY} r="3" fill={color} />
+    </>
+  );
 };
 
 
-export function GaugeChart() {
+export function GaugeChart({ data }: { data: SatisfactionData }) {
+  const total = data.satisfied + data.dissatisfied;
+  const satisfiedPercentage = total > 0 ? (data.satisfied / total) : 0;
+  const gaugeData = [
+    { name: 'Satisfied', value: data.satisfied, color: '#82ca9d' },
+    { name: 'Dissatisfied', value: data.dissatisfied, color: '#ca8282' },
+  ];
+
   return (
     <Card className="p-2 lg:p-6 w-full lg:w-1/3 h-full dark:shadow-none shadow-md shadow-slate-400">
       <CardHeader>
@@ -79,7 +77,7 @@ export function GaugeChart() {
               dataKey="value"
               startAngle={180}
               endAngle={0}
-              data={data}
+              data={gaugeData}
               cx={cx}
               cy={cy}
               innerRadius={iR}
@@ -87,12 +85,12 @@ export function GaugeChart() {
               fill="#8884d8"
               stroke="none"
             >
-              {data.map((entry, index) => (
+              {gaugeData.map((entry, index) => (
                 <Cell key={`cell-${index}`} fill={entry.color} />
               ))}
             </Pie>
             <Tooltip />
-            {needle(value, data, cx, cy, iR, oR, '#d0d000')}
+            {needle(satisfiedPercentage * 100, cx, cy, iR, oR, '#d0d000')}
           </PieChart>
         </ResponsiveContainer>
       </CardContent>
