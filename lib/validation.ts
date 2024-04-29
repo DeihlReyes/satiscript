@@ -60,7 +60,7 @@ export const passwordSchema = z.object({
 const durationPattern = /^(\d{2}):(\d{2}):(\d{2})$/;
 
 export const callsSchema = z.object({
-  id: z.string(),
+  callId: z.string(),
   time: z.string(),
   userId: z.string(),
   duration: z.string().regex(durationPattern, { message: "Duration must be in HH:MM:SS format" }),
@@ -71,6 +71,6 @@ export const callsSchema = z.object({
 })
 
 // create a version of callsSchema that does not require the id field
-export const createCallsSchema = callsSchema.omit({ id: true, createdAt: true, updatedAt: true})
+export const createCallsSchema = callsSchema.omit({ id: true, createdAt: true, updatedAt: true, callId: true})
 
 export type Calls = z.infer<typeof callsSchema>

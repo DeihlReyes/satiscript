@@ -8,6 +8,8 @@ export async function getCalls(userId: string) {
       userId: userId, // Using the userId parameter
     },
   });
+
+  console.log(data);
   const calls = z.array(callsSchema).parse(data);
   
   return calls;

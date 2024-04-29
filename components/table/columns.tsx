@@ -11,11 +11,11 @@ import { capitalizeFirstLetter, formatTime } from "@/lib/utils"
 
 export const columns: ColumnDef<Calls>[] = [
   {
-    accessorKey: "id",
+    accessorKey: "callId",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Call ID" />
     ),
-    cell: ({ row }) => <div className="w-full pr-2">{row.getValue("id")}</div>,
+    cell: ({ row }) => <div className="w-full pr-2">{row.getValue("callId")}</div>,
   },
   {
     accessorKey: "createdAt",
