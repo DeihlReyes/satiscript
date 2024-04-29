@@ -18,7 +18,7 @@ const CallLogs = async () => {
     redirect("/sign-in");
   }
   
-  const calls = await getCalls(session.userId)
+  const calls = await getCalls(session.user)
   
   return (
     <div className='px-8 lg:px-12 py-8'>
