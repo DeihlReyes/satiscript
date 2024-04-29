@@ -36,7 +36,7 @@ const LogoutButton = () => {
                 action={async () => {
                   "use server";
                   await logout();
-                  redirect("/sign-in");
+                  redirect("/");
                 }}>
                 <AlertDialogCancel>Cancel</AlertDialogCancel>
                 <AlertDialogAction className="dark:text-foreground" type="submit">
