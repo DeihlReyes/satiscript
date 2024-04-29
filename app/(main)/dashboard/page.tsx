@@ -5,7 +5,15 @@ import DataCards from "@/components/datacards";
 import { getSession } from "@/lib/auth";
 import { getCalls } from "@/lib/get-calls";
 import { Call } from "@prisma/client";
+import { Metadata } from "next";
 import { redirect } from "next/navigation";
+
+
+export const metadata: Metadata = {
+  title: "Dashboard | Satiscript",
+  description: "Dashboard for Satiscript, a customer satisfaction priority platform. View your call data and customer satisfaction rate.",
+};
+
 
 function prepareAreaChartData(calls: Call[]) {
   const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];

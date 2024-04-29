@@ -9,9 +9,6 @@ const montserrat = Montserrat({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Satiscript",
   description: "Satiscript is a web application that provides data analysis and visualization tools for call center agent performance.",
-  icons: {
-    icon: '/public/logo.png',
-  },
 };
 
 export default function RootLayout({

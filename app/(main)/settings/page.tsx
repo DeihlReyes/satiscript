@@ -3,7 +3,13 @@ import GeneralTab from "@/components/general-tab"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { getSession } from "@/lib/auth";
 import { getProfile } from "@/lib/profile";
+import { Metadata } from "next";
 import { redirect } from "next/navigation";
+
+export const metadata: Metadata = {
+  title: "Settings | Satiscript",
+  description: "Settings for Satiscript, a customer satisfaction priority platform. Update your account information and general settings.",
+};
 
 
 const Settings = async () => {

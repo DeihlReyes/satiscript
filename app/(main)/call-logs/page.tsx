@@ -3,6 +3,12 @@ import { DataTable } from '@/components/table/data-table'
 import { getSession } from '@/lib/auth'
 import { redirect } from 'next/navigation'
 import { getCalls } from '@/lib/get-calls'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: "Call Logs | Satiscript",
+  description: "Call logs for Satiscript, a customer satisfaction priority platform. View your call data in a table.",
+};
 
 
 const CallLogs = async () => {
