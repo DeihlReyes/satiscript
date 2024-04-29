@@ -12,7 +12,7 @@ const Features = () => {
   return (
     <div id="features" className="flex flex-col justify-center items-center w-full h-full py-16 lg:py-32 px-0 lg:px-24">
       <h2 className="text-4xl lg:text-7xl font-bold mb-6">Features</h2>
-      <p className="w-full max-w-5xl text-center">
+      <p className="w-full max-w-5xl text-center leading-relaxed">
         Level up customer satisfaction with Satiscript&apos;s, using our system
         to determine the emotion of your customers and know if an agent is doing
         a good job or not. Our system is designed to help you improve your
@@ -23,10 +23,10 @@ const Features = () => {
           (feature) => (      
             <li
               key={feature.title}>
-              <Card className="w-full lg:w-[27rem] h-full hover:shadow-md hover:shadow-slate-500 transition-all ease-linear duration-150">
+              <Card className="w-full lg:w-[27rem] h-full hover:shadow-md hover:shadow-slate-500 hover:dark:shadow-slate-800 transition-all ease-linear duration-150">
                 <CardHeader className="flex flex-row justify-between items-center">
                   <CardTitle>{feature.title}</CardTitle>
-                  <feature.icon className="h-10 w-10" />
+                  <feature.icon className="h-10 w-10 text-[#3664ef]" />
                 </CardHeader>
                 <CardContent>
                   <p>{feature.description}</p>

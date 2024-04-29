@@ -7,6 +7,9 @@ import { LayoutDashboard,
   BrainCircuit
 } from "lucide-react";
 import profile from "@/public/assets/blank.png";
+import paul from "@/public/assets/paul.png";
+import deihl from "@/public/assets/deihl.png";
+import ynzon from "@/public/assets/ynzon.png";
 
 
 export const headerLinks = [
@@ -86,14 +89,14 @@ export const team = [
   },
   {
     name: "Paul Bowen Ramos",
-    image: profile,
+    image: paul,
   },
   {
     name: "Deihl Arron Reyes",
-    image: profile,
+    image: deihl,
   },
   {
     name: "Roy Ryan Ynzon",
-    image: profile,
+    image: ynzon,
   }
 ];

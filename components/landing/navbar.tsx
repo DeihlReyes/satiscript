@@ -3,7 +3,7 @@ import NavItems from "./nav-items";
 
 const LandingNavbar = () => {
     return(
-        <header className="fixed top-0 bg-background shadow-md md:py-7 md:px-32 py-4 w-full">
+        <header className="fixed top-0 bg-background shadow-md md:py-7 md:px-32 py-4 w-full z-50">
             <nav>
                 <div className="hidden md:flex flex-row mx-auto justify-center items-center text-md w-full max-w-7xl">
                     <NavItems/>

@@ -1,5 +1,6 @@
 import Download from '@/components/landing/download'
 import Features from '@/components/landing/features'
+import Footer from '@/components/landing/footer'
 import Hero from '@/components/landing/hero'
 import LandingNavbar from '@/components/landing/navbar'
 import Reseachers from '@/components/landing/researchers'
@@ -15,6 +16,7 @@ const LandingPage = () => {
         <Reseachers />
         <Download />
       </section>
+      <Footer />
     </main>
   )
 }

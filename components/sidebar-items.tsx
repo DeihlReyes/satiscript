@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import { usePathname, useRouter } from "next/navigation";
 import routes from "@/lib/constant";
 import Image from 'next/image'
-import logo from '@/public/assets/Satiscript.svg'
+import logo from '@/public/assets/logo.png'
 
 const SideBarItems = () => {
   const pathname = usePathname();
@@ -17,13 +17,12 @@ const SideBarItems = () => {
   };
   return (
     <div>
-      <Link href="/dashboard" className="mb-14 flex items-center pl-3 gap-3">
+      <Link href="/dashboard" className="mb-14 flex flex-col justify-center items-center gap-3">
         <Image
           src={logo}
           alt="Satiscript"
-          width={20}
-          height={20}
-          className="mr-3"
+          width={100}
+          height={100}
         />
         <h1 className="text-lg lg:text-2xl font-bold">Satiscript</h1>
       </Link>

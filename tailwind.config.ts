@@ -67,10 +67,32 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "float": {
+          "0%, 100%": {
+            transform: "translateY(0)",
+          },
+          "50%": {
+            transform: "translateY(-50px)",
+          },
+        },
+        "up-disappear": {
+          from: { opacity: '1', transform: "translateY(0)" },
+          to: { opacity: '0', transform: "translateY(-100px)" },
+        },
       },
       animation: {
+        "bounce-slow": 'float 8s ease-in-out infinite',
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "up-disappear": "up-disappear 4s ease-out infinite",
+      },
+      transitionDelay: {
+        '95': '175ms',
+        '115': '1475ms',
+        '135': '375ms',
+        '155': '1275ms',
+        '175': '675ms',
+        '195': '575ms',
       },
     },
   },
