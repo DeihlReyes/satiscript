@@ -28,7 +28,7 @@ export async function POST(req: Request) {
 
     if (!passwordMatch) {
       return NextResponse.json(
-        { user: null, message: "Invalid Credentials" },
+        { user: null, message: "Wrong Password" },
         { status: 401 }
       );
     }
@@ -43,6 +43,7 @@ export async function POST(req: Request) {
       data: { token: session },
     });
 
+    
     const userDetails = {
       id: existingUser.id,
       name: existingUser.firstName + " " + existingUser.lastName,
