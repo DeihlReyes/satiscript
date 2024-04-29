@@ -56,14 +56,14 @@ export function GaugeChart({ data }: { data: SatisfactionData }) {
   const total = data.satisfied + data.dissatisfied;
   const satisfiedPercentage = total > 0 ? (data.satisfied / total) : 0;
   const gaugeData = [
-    { name: 'Satisfied', value: data.satisfied, color: '#82ca9d' },
-    { name: 'Dissatisfied', value: data.dissatisfied, color: '#ca8282' },
+    { name: 'Satisfied', value: data.satisfied, color: '#5BC553' },
+    { name: 'Dissatisfied', value: data.dissatisfied, color: '#DC403C' },
   ];
 
   return (
     <Card className="p-2 lg:p-6 w-full lg:w-1/3 h-full dark:shadow-none shadow-md shadow-slate-400">
       <CardHeader>
-        <CardTitle className="text-base lg:text-lg font-semibold">Call Volume</CardTitle>
+        <CardTitle className="text-base lg:text-lg font-semibold">Satisfaction Ratio</CardTitle>
       </CardHeader>
       <CardContent className="py-6">
         <ResponsiveContainer width="100%" height={250}>

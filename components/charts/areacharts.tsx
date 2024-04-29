@@ -38,7 +38,7 @@ export function AreaChartComponent({ data }: AreaChartProps) {
             <XAxis dataKey="month" />
             <YAxis />
             <Tooltip />
-            <Area type="monotone" dataKey="calls" stroke="#8884d8" fill="#8884d8" />
+            <Area type="monotone" dataKey="calls" stroke="#8884d8" fill="#5684FC" />
           </AreaChart>
         </ResponsiveContainer>
       </CardContent>

@@ -42,8 +42,8 @@ export function  LineChartComponent({ data }: LineChartComponentProps) {
             <YAxis />
             <Tooltip />
             <Legend />
-            <Line type="monotone" dataKey="satisfied" stroke="#8884d8" activeDot={{ r: 8 }} />
-            <Line type="monotone" dataKey="dissatisfied" stroke="#82ca9d" />
+            <Line type="monotone" dataKey="satisfied" stroke="#5BC553" activeDot={{ r: 8 }} />
+            <Line type="monotone" dataKey="dissatisfied" stroke="#DC403C" />
           </LineChart>
         </ResponsiveContainer>
       </CardContent>

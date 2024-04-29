@@ -5,6 +5,9 @@ import { DataTableColumnHeader } from "./data-table-column-header"
 import Link from "next/link"
 import { formatDate } from "@/lib/formatter"
 import { Calls } from "@/lib/validation"
+import { capitalizeFirstLetter, formatTime } from "@/lib/utils"
+
+
 
 export const columns: ColumnDef<Calls>[] = [
   {
@@ -26,7 +29,7 @@ export const columns: ColumnDef<Calls>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Time" />
     ),
-    cell: ({ row }) => <div className="w-full pr-2">{row.getValue("time")}</div>,
+    cell: ({ row }) => <div className="w-full pr-2">{formatTime(row.getValue("time"))}</div>,
     filterFn: (row, id, value) => {
       return value.includes(row.getValue(id))
     },
@@ -46,7 +49,7 @@ export const columns: ColumnDef<Calls>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Satisfaction" />
     ),
-    cell: ({ row }) => <div className="w-full pr-2">{row.getValue("satisfaction")}</div>,
+    cell: ({ row }) => <div className="w-full pr-2">{capitalizeFirstLetter(row.getValue("satisfaction"))}</div>,
     filterFn: (row, id, value) => {
       return value.includes(row.getValue(id))
     },

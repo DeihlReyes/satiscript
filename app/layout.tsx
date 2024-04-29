@@ -9,13 +9,9 @@ const montserrat = Montserrat({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Satiscript",
   description: "Satiscript is a web application that provides data analysis and visualization tools for call center agent performance.",
-  icons: [
-    {
-      url: "/favicon.ico",
-      sizes: "64x64",
-      type: "image/png"
-    }
-  ]
+  icons: {
+    icon: '/public/logo.png',
+  },
 };
 
 export default function RootLayout({
@@ -25,6 +21,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+      </head>
       <body className={montserrat.className}>
         <ThemeProvider
           attribute="class"
