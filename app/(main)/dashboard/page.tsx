@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 };
 
 
-function prepareAreaChartData(calls: Call[]) {
+function prepareAreaChartData(calls: Omit<Call, "id">[]) {
   const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   const initialData = months.map(month => ({ month, calls: 0 }));
 
@@ -29,7 +29,7 @@ function prepareAreaChartData(calls: Call[]) {
   return updatedData;
 }
 
-function prepareLineChartData(calls: Call[]) {
+function prepareLineChartData(calls: Omit<Call, "id">[]) {
   const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   const initialData = months.map(month => ({
     month,
@@ -51,7 +51,7 @@ function prepareLineChartData(calls: Call[]) {
   return updatedData;
 }
 
-function prepareSatisfactionData(calls: Call[]) {
+function prepareSatisfactionData(calls: Omit<Call, "id">[]) {
   const data = prepareLineChartData(calls);
   const satisfiedCount = data.reduce((acc, month) => acc + month.satisfied, 0);
   const dissatisfiedCount = data.reduce((acc, month) => acc + month.dissatisfied, 0);
@@ -62,7 +62,7 @@ function prepareSatisfactionData(calls: Call[]) {
   };
 }
 
-function prepareDataCardData(calls: Call[]) {
+function prepareDataCardData(calls: Omit<Call, "id">[]) {
   const totalCalls = calls.length;
   const satisfiedCustomers = calls.filter(call => call.satisfaction === "satisfied").length;
   const dissatisfiedCustomers = calls.filter(call => call.satisfaction === "dissatisfied").length;
