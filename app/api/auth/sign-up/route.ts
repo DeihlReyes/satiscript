@@ -6,8 +6,7 @@ import { regSchema } from "@/lib/validation";
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-
-    const { firstName, lastName, username, email, password  } = regSchema.parse(body);
+    const { firstName, lastName, username, email, password } = regSchema.parse(body);
 
     const existingEmail = await db.user.findUnique({
       where: { email: email },
@@ -19,14 +18,14 @@ export async function POST(req: Request) {
 
     if (existingEmail || existingUsername) {
       return NextResponse.json(
-        { user: null, message: "User already exist" },
+        { user: null, message: "User already exists" },
         { status: 409 }
       );
     }
 
     const hashedPassword = await hash(password, 10);
 
-    const response = await db.user.create({
+    const newUser = await db.user.create({
       data: {
         firstName: firstName,
         lastName: lastName,
@@ -35,8 +34,18 @@ export async function POST(req: Request) {
         password: hashedPassword,
       },
     });
+
+    // Create Espware instance for the new user
+    const newEspware = await db.espware.create({
+      data: {
+        isCall: false,
+        emotion: "",
+        satisfaction: "",
+      },
+    });
+
     return NextResponse.json(
-      { user: response, message: "User Created Successfully" },
+      { user: newUser, espware: newEspware, message: "User Created Successfully" },
       { status: 201 }
     );
   } catch (error) {

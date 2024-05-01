@@ -7,10 +7,10 @@ import { cookies } from "next/headers";
 
 export async function PATCH(req: Request) {
   try {
-    const { emotion, espKey } = await req.json();
+    const { satisfaction, isCall, espKey } = await req.json();
 
     const user = await db.user.findUnique({
-      where: { id: espKey },
+      where: { espKey: espKey },
     });
 
     if (!user) {
@@ -23,7 +23,8 @@ export async function PATCH(req: Request) {
     const esp = await db.espware.update({
       where: { id: espKey },
       data: {
-        emotion: emotion,
+        satisfaction: satisfaction,
+        isCall: isCall
       }
     });
 

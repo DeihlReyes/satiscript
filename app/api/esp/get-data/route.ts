@@ -4,12 +4,31 @@ import { NextResponse } from "next/server";
 
 export async function GET(req: Request) {
   try {
+    const { espKey } = await req.json();
+
     console.log(req.url)
-    const data = await db.espware.findUnique(
-      {
-        where: { id: "thisisid" },
-      }
-    )
+
+    const user = await db.user.findUnique({
+      where: { espKey: espKey },
+    });
+
+    if (!user) {
+      return NextResponse.json(
+        { message: "User not found" },
+        { status: 404 }
+      );
+    }
+
+    const data = await db.espware.findMany({
+      where: { id: espKey },
+    });
+
+    if (!data) {
+      return NextResponse.json(
+        { message: "No data found" },
+        { status: 404 }
+      );
+    }
 
     return NextResponse.json(
       { Esp_Data: data, message: "Extraction Successfull" },

@@ -47,6 +47,7 @@ export async function POST(req: Request) {
     const userDetails = {
       id: existingUser.id,
       name: existingUser.firstName + " " + existingUser.lastName,
+      espKey: existingUser.espKey,
     }
 
     return NextResponse.json(
