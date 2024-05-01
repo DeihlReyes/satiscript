@@ -2,11 +2,12 @@ import { db } from "@/lib/db";
 import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 
-export async function GET(req: Request) {
+export async function POST(req: Request) {
   try {
     const { espKey } = await req.json();
 
     console.log(req.url)
+    console.log(espKey)
 
     const user = await db.user.findUnique({
       where: { espKey: espKey },
