@@ -48,6 +48,13 @@ export const detailsSchema = z.object({
   username: z.string(),
 })
 
+export const espKeySchema = z.object({
+  userId: z.string(),
+  espKey: z.string() || z.null()
+})
+
+export const getEspKeySchema = espKeySchema.omit({userId: true})
+
 export const passwordSchema = z.object({
   currentPassword: z.string(),
   newPassword: z.string(),

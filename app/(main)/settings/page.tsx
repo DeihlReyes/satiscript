@@ -2,6 +2,7 @@ import AccountTab from "@/components/account-tab"
 import GeneralTab from "@/components/general-tab"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { getSession } from "@/lib/auth";
+import GetEspKey from "@/lib/espkey";
 import { getProfile } from "@/lib/profile";
 import { Metadata } from "next";
 import { redirect } from "next/navigation";
@@ -15,6 +16,8 @@ export const metadata: Metadata = {
 const Settings = async () => {
   const session = await getSession();
   const user = await getProfile();
+  const espKeyResponse = await GetEspKey(session.user);
+  const espKey = espKeyResponse?.espKey ?? null;
 
   if (!session) {
     redirect("/sign-in");
@@ -31,7 +34,7 @@ const Settings = async () => {
           <AccountTab username={user!.username} firstName={user!.firstName} lastName={user!.lastName} />
         </TabsContent>
         <TabsContent value="general">
-          <GeneralTab />
+          <GeneralTab userId={session.user} espKey={espKey as string}/>
         </TabsContent>
       </Tabs>
     </div>

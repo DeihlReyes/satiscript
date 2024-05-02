@@ -1,24 +1,14 @@
 import { db } from "@/lib/db";
+import { espKeySchema } from "@/lib/validation";
 import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   try {
-    const { espKey } = await req.json();
+    const body = await req.json();
+    const { espKey } = espKeySchema.parse(body)
 
     console.log(req.url)
-    console.log(espKey)
-
-    const user = await db.user.findUnique({
-      where: { espKey: espKey },
-    });
-
-    if (!user) {
-      return NextResponse.json(
-        { message: "User not found" },
-        { status: 404 }
-      );
-    }
 
     const data = await db.espware.findMany({
       where: { id: espKey },

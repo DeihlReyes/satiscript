@@ -49,13 +49,14 @@ const SignInForm = () => {
       }),
     });
 
+    console.log(response)
     if (response.ok) {
       router.push("/dashboard");
     } else {
       toast({
         variant: "destructive",
         title: "Uh oh! Something went wrong.",
-        description: "There was an error logging you in. Please try again.",
+        description: "Error Logging In",
         duration: 3000,
       });
     }

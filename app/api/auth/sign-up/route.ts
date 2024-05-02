@@ -31,21 +31,14 @@ export async function POST(req: Request) {
         lastName: lastName,
         username: username,
         email: email,
+        espKey: "",
         password: hashedPassword,
       },
     });
 
     // Create Espware instance for the new user
-    const newEspware = await db.espware.create({
-      data: {
-        isCall: false,
-        emotion: "",
-        satisfaction: "",
-      },
-    });
-
     return NextResponse.json(
-      { user: newUser, espware: newEspware, message: "User Created Successfully" },
+      { user: newUser, message: "User Created Successfully" },
       { status: 201 }
     );
   } catch (error) {
