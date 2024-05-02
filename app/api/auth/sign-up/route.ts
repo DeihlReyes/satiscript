@@ -31,10 +31,12 @@ export async function POST(req: Request) {
         lastName: lastName,
         username: username,
         email: email,
-        espKey: "",
+        espKey: "Empty",
         password: hashedPassword,
       },
     });
+
+    console.log(newUser)
 
     // Create Espware instance for the new user
     return NextResponse.json(
