@@ -5,9 +5,8 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   try {
-    const body = await req.json();
-    const { espKey } = espKeySchema.parse(body)
-
+    const { espKey } = await req.json();
+    console.log(espKey)
     console.log(req.url)
 
     const data = await db.espware.findMany({
