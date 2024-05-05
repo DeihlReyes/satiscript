@@ -54,13 +54,4 @@ export const columns: ColumnDef<Calls>[] = [
       return value.includes(row.getValue(id))
     },
   },
-  {
-    accessorKey: "scriptlink",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Script" />
-    ),
-    cell: ({ row }) => <div className="w-full pr-2 text-blue-600"><Link target="_blank" href={row.getValue("scriptlink")}>Download</Link></div>,
-    enableSorting: false,
-    enableHiding: false,
-  },
 ]
