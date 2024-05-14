@@ -9,8 +9,10 @@ export async function PATCH(req: Request) {
   try {
     const { emotion, espKey } = await req.json();
 
-    const user = await db.user.findUnique({
-      where: { espKey: espKey },
+    const user = await db.user.findFirst({
+      where: {
+        espKey: espKey,
+      }
     });
 
     if (!user) {
