@@ -5,12 +5,7 @@ import { espKeySchema } from "@/lib/validation";
 export async function PATCH(req: Request) {
   try {
     const body = await req.json();
-    console.log(body)
-
     const { userId, espKey } = espKeySchema.parse(body);
-
-    console.log(userId)
-    console.log(espKey)
 
     const user = await db.user.update({
       where: { id: userId },

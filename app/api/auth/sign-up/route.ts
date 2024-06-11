@@ -36,9 +36,6 @@ export async function POST(req: Request) {
       },
     });
 
-    console.log(newUser)
-
-    // Create Espware instance for the new user
     return NextResponse.json(
       { user: newUser, message: "User Created Successfully" },
       { status: 201 }

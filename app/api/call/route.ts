@@ -19,10 +19,7 @@ export async function POST(req: Request) {
     );
   }
 
-  // Increment the user's call count
   const newCallCount = user.callCount + 1;
-
-  // Generate the new call ID using the incremented count
   const newCallId = `Call-${newCallCount}`;
 
   try {

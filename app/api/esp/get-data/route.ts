@@ -1,12 +1,9 @@
 import { db } from "@/lib/db";
-import { espKeySchema } from "@/lib/validation";
-import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   try {
     const { espKey } = await req.json();
-    console.log(espKey)
     console.log(req.url)
 
     const data = await db.espware.findMany({

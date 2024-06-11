@@ -19,7 +19,6 @@ function prepareAreaChartData(calls: Omit<Call, "id">[]) {
   const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   const initialData = months.map(month => ({ month, calls: 0 }));
 
-  // Reduce the calls to sum them up per month
   const updatedData = calls.reduce((acc, call) => {
     const monthIndex = new Date(call.createdAt).getMonth();
     acc[monthIndex].calls += 1;
@@ -37,7 +36,6 @@ function prepareLineChartData(calls: Omit<Call, "id">[]) {
     dissatisfied: 0
   }));
 
-  // Reduce the calls to sum them up per month and satisfaction type
   const updatedData = calls.reduce((acc, call) => {
     const monthIndex = new Date(call.createdAt).getMonth();
     if (call.satisfaction === 'satisfied') {
@@ -67,19 +65,13 @@ function prepareDataCardData(calls: Omit<Call, "id">[]) {
   const satisfiedCustomers = calls.filter(call => call.satisfaction === "satisfied").length;
   const dissatisfiedCustomers = calls.filter(call => call.satisfaction === "dissatisfied").length;
 
-  // Helper function to convert HH:MM:SS to total seconds
   function durationToSeconds(duration: string): number {
       const [hours, minutes, seconds] = duration.split(':').map(Number);
       return hours * 3600 + minutes * 60 + seconds;
   }
 
-  // Calculate the total duration in seconds
   const totalSeconds = calls.reduce((acc, call) => acc + durationToSeconds(call.duration), 0);
-
-  // Convert total seconds to average minutes
   const averageMinutes = totalCalls > 0 ? (totalSeconds / totalCalls) / 60 : 0;
-
-  // Round to two decimal places for precision
   const averageCallTime = parseFloat(averageMinutes.toFixed(2));
   const data = {
       totalCalls,
