@@ -29,10 +29,6 @@ export const headerLinks = [
     label: 'DOWNLOAD',
     route: '#download',
   },
-  {
-    label: 'DASHBOARD',
-    route: '/dashboard',
-  },
 ]
 
 export const routes = [

@@ -90,6 +90,7 @@ const dashboard = async () => {
   if (!session) {
     redirect("/sign-in");
   }
+  
   const calls = await getCalls(session.user)
   const areaChartData = prepareAreaChartData(calls);
   const lineChartData = prepareLineChartData(calls);

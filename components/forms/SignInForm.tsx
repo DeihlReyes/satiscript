@@ -119,6 +119,13 @@ const SignInForm = () => {
           </p>
         </Form>
       </CardContent>
+      <CardFooter>
+        <div className="bg-primary/10 w-full p-4">
+          <h2 className="text-base mb-2">Demo Account: </h2>
+          <p className="text-sm">Email: demo@gmail.com</p>
+          <p className="text-sm">Password: demo12345</p>
+        </div>
+      </CardFooter>
     </Card>
   );
 };

@@ -15,6 +15,8 @@ export async function POST(req: Request) {
       where: { email: email },
     });
 
+    console.log('Error in prisma');
+
     if (!existingUser) {
       return NextResponse.json(
         { user: null, message: "User not found" },

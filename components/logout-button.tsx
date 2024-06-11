@@ -1,6 +1,4 @@
-import { logout } from "@/lib/auth";
 import { LogOut } from "lucide-react";
-import { redirect } from "next/navigation";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -12,6 +10,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
+import { logoutAction } from "@/lib/logout-action";
 
 
 const LogoutButton = () => {
@@ -33,11 +32,7 @@ const LogoutButton = () => {
             <AlertDialogFooter>
               <form
                 className="space-x-4"
-                action={async () => {
-                  "use server";
-                  await logout();
-                  redirect("/");
-                }}>
+                action={logoutAction}>
                 <AlertDialogCancel>Cancel</AlertDialogCancel>
                 <AlertDialogAction className="dark:text-foreground" type="submit">
                   Sign out

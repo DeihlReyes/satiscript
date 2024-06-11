@@ -13,6 +13,7 @@ import {
 import { cn } from "@/lib/utils";
 import { usePathname, useRouter } from "next/navigation";
 import routes from "@/lib/constant";
+import LogoutButton from "./logout-button";
 
 export const MobileSidebar = () => {
   const pathname = usePathname();
@@ -41,7 +42,7 @@ export const MobileSidebar = () => {
             </div>
           </div>
         </SheetHeader>
-        <SheetFooter>
+        <SheetFooter className="flex flex-col justify-between h-full pb-16">
           <div className="flex w-full flex-col px-4">
             {routes.map((route) => (
               <SheetClose key={route.href}>
@@ -61,6 +62,9 @@ export const MobileSidebar = () => {
                 </button>
               </SheetClose>
             ))}
+          </div>
+          <div className="px-4">
+            <LogoutButton />
           </div>
         </SheetFooter>
       </SheetContent>
