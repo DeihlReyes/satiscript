@@ -19,8 +19,8 @@ const Hero = () => {
           aims to improve customer service quality by providing real-time emotion detection of a customer
           and provide the agent a script to follow based on the customer&apos;s emotion and words.
         </p>
-        <Link href='#download'>
-          <Button className='mt-10 w-36 font-bold dark:text-foreground'>TRY IT NOW</Button>
+        <Link href='#demo'>
+          <Button className='mt-10 w-36 font-bold dark:text-foreground'>Watch demo</Button>
         </Link>
       </div>
     </div>

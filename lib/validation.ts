@@ -78,6 +78,6 @@ export const callsSchema = z.object({
 })
 
 // create a version of callsSchema that does not require the id field
-export const createCallsSchema = callsSchema.omit({ id: true, createdAt: true, updatedAt: true, callId: true})
+export const createCallsSchema = callsSchema.omit({ createdAt: true, updatedAt: true, callId: true})
 
 export type Calls = z.infer<typeof callsSchema>

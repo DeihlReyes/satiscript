@@ -1,4 +1,4 @@
-import Download from '@/components/landing/download'
+import Demo from '@/components/landing/demo'
 import Features from '@/components/landing/features'
 import Footer from '@/components/landing/footer'
 import Hero from '@/components/landing/hero'
@@ -14,7 +14,7 @@ const LandingPage = () => {
         <Hero />
         <Features />
         <Reseachers />
-        <Download />
+        <Demo />
       </section>
       <Footer />
     </main>

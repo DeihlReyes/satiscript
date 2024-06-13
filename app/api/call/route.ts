@@ -6,7 +6,7 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
   const body = await req.json();
 
-  const { time, duration, satisfaction, scriptlink, userId } = await createCallsSchema.parse(body);
+  const { time, duration, satisfaction, scriptlink, userId } = createCallsSchema.parse(body);
 
   const user = await db.user.findUnique({
     where: { id: userId }

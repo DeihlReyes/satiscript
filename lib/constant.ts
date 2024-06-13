@@ -26,8 +26,8 @@ export const headerLinks = [
     route: '#',
   },
   {
-    label: 'DOWNLOAD',
-    route: '#download',
+    label: 'DEMO',
+    route: '#demo',
   },
 ]
 

@@ -8,6 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
+
 const Features = () => {
   return (
     <div id="features" className="flex flex-col justify-center items-center w-full h-full py-16 lg:py-32 px-0 lg:px-24">
