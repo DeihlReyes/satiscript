@@ -27,10 +27,14 @@ export const MobileNavbar = () => {
 
   return (
     <Sheet>
-      <SheetTrigger className="flex transition hover:opacity-75 md:hidden">
+      <SheetTrigger className="flex transition hover:opacity-75 lg:hidden">
         <Menu />
       </SheetTrigger>
-      <SheetContent onCloseAutoFocus={event => event.preventDefault()} side="right" className="flex h-full flex-col space-y-8 p-0">
+      <SheetContent
+        onCloseAutoFocus={(event) => event.preventDefault()}
+        side="right"
+        className="flex h-full flex-col space-y-8 p-0"
+      >
         <SheetHeader className="px-4 py-8 mt-1">
           <div>
             <div className="flex items-center pt-2">
@@ -55,11 +59,9 @@ export const MobileNavbar = () => {
                 <ul key={index}>
                   <li
                     key={link.route}
-                    className='flex-center p-medium-16 whitespace-nowrap transition-all ease-in-out duration-300 border-b-2 border-transparent hover:border-foreground py-3'>
-                    <Link
-                      href={link.route}>
-                      {link.label}
-                    </Link>
+                    className="flex-center p-medium-16 whitespace-nowrap transition-all ease-in-out duration-300 border-b-2 border-transparent hover:border-foreground py-3"
+                  >
+                    <Link href={link.route}>{link.label}</Link>
                   </li>
                 </ul>
               );
