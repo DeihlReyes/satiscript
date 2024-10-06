@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import steph from "@/public/assets/steph.jpg";
 import paul from "@/public/assets/paul.jpg";
-import deihl from "@/public/assets/deihl.jpg";
+import deihl from "@/public/assets/arron.jpg";
 import ynzon from "@/public/assets/roy.jpg";
 
 export const headerLinks = [
